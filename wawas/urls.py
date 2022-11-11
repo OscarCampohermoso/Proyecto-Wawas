@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from wawas_home import views as wawas_home_views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', wawas_home_views.home, name='home'),
 ]
