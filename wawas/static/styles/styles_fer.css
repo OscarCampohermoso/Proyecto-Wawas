@@ -1,6 +1,6 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin: 50;
+    padding: 50;
     box-sizing: border-box;
 }
 
@@ -12,10 +12,49 @@
     overflow: hidden;
 }
 
-header{
+.service{
     width: 100%;
     height: 600px;
     background: #70e1f5;
     background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);
     background: linear-gradient(to right, hsla(34, 100%, 79%, 0.692), hsla(189, 87%, 70%, 0.692)), url(https://static.wixstatic.com/media/7869d1_928290b4a6b74f80b56339d71efacfe6~mv2.jpg/v1/fit/w_1000%2Ch_700%2Cal_c%2Cq_80/file.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    display: flex;
+    height: 430px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.service h1{
+    font-size: 50px;
+    color: #fff;
+}
+
+.service h2{
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+}
+
+
+.img-cuidadores{
+    display: flex;
+    justify-content: space-evenly;
+}
+.img-peluqueria{
+    display: flex;
+    justify-content: space-evenly;
+}
+.img-veterinaria{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+header{
+    background-color: #dfcae1;
 }
