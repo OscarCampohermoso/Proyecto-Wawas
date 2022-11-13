@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'wawas_home',
     'contact',
     'service',
+    'news',
+    'accounts',
 ]
 
 MIDDLEWARE = [
