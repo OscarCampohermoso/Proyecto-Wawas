@@ -1,26 +1,62 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% load static %}
 <section class="service">
-    <h3>Tenemos los mejores servicios para tu peludito</h3>
-    <span>¡Échale un ojo!</span>
+    <h1>Tenemos los mejores servicios para tu peludito</h1>
+    <h2>¡Échale un ojo!</h2>
 </section>
 
-<div class="wave" style="height: 150px; overflow: hidden;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,128L0,64L1440,64L1440,320L0,320L0,320Z"></path></svg></div>
-
-<section class="conteiner">
-    <div class="conteiner-service">
-        <div class="conteiner-text">
-            <img src="https://www.hogarmania.com/archivos/201707/paseador-de-perros-1280x720x80xX.jpg" alt="" class="img-cuidadores">
-            <h5>Cuidadores</h5>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque cumque beatae porro, ipsam sint voluptatem harum adipisci magni? Unde ipsum voluptatem fuga quam beatae officiis officia suscipit nisi! Explicabo dicta excepturi mollitia laudantium eveniet, sit labore repellendus ducimus nobis sint deserunt ipsum incidunt debitis porro illum aspernatur ut architecto libero nam quidem! Vitae, nemo. Veniam aliquid vel voluptatibus. Blanditiis necessitatibus animi ad perferendis nobis officia quam illo accusantium molestias commodi non quos aspernatur excepturi nesciunt, ab est ex qui consequatur laborum dicta, dolore hic? Accusantium magni, repudiandae delectus doloribus ipsum nam maxime rem consequuntur natus aspernatur deleniti excepturi dolorum at!</p>
-            <img src="https://www.clinicaveterinariacincovillas.com/img/peluqueria-para-mascotas.jpg" alt="" class="img-peluqueria">
-            <h5>Peluquería</h5>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque cumque beatae porro, ipsam sint voluptatem harum adipisci magni? Unde ipsum voluptatem fuga quam beatae officiis officia suscipit nisi! Explicabo dicta excepturi mollitia laudantium eveniet, sit labore repellendus ducimus nobis sint deserunt ipsum incidunt debitis porro illum aspernatur ut architecto libero nam quidem! Vitae, nemo. Veniam aliquid vel voluptatibus. Blanditiis necessitatibus animi ad perferendis nobis officia quam illo accusantium molestias commodi non quos aspernatur excepturi nesciunt, ab est ex qui consequatur laborum dicta, dolore hic? Accusantium magni, repudiandae delectus doloribus ipsum nam maxime rem consequuntur natus aspernatur deleniti excepturi dolorum at!</p>
-            <img src="https://estaticos.muyinteresante.es/uploads/images/article/596c9e255bafe81cf43c986b/veterinaria-perro-golden-fonendo_0.jpg" alt="" class="img-veterinaria">
-            <h5>Veterinaria</h5>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque cumque beatae porro, ipsam sint voluptatem harum adipisci magni? Unde ipsum voluptatem fuga quam beatae officiis officia suscipit nisi! Explicabo dicta excepturi mollitia laudantium eveniet, sit labore repellendus ducimus nobis sint deserunt ipsum incidunt debitis porro illum aspernatur ut architecto libero nam quidem! Vitae, nemo. Veniam aliquid vel voluptatibus. Blanditiis necessitatibus animi ad perferendis nobis officia quam illo accusantium molestias commodi non quos aspernatur excepturi nesciunt, ab est ex qui consequatur laborum dicta, dolore hic? Accusantium magni, repudiandae delectus doloribus ipsum nam maxime rem consequuntur natus aspernatur deleniti excepturi dolorum at!</p>
+<header>
+    <main>
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="img-cuidadores">
+                    <img src="{% static 'images/cuidadores.png' %}" width="200" height="200"
+                        style="border-radius: 100%" />
+                    <div class="conteiner-cuidadores">
+                        <h3 class="title">Cuidadores</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo optio exercitationem ab
+                            quaerat iure itaque culpa nesciunt sequi eum nulla minus nam numquam ut porro ipsam ratione
+                            repudiandae dolore quod natus illo tempore, nisi obcaecati omnis. Suscipit cupiditate nobis
+                            sapiente, dicta ipsa laboriosam, magni fuga vel dolorem optio tempore aliquam soluta fugiat
+                            hic nostrum ipsam laudantium beatae in perferendis veniam non! Nam, temporibus tenetur earum
+                            sunt aut unde totam? Natus aperiam nulla error recusandae quidem corporis est dolor beatae
+                            necessitatibus, sequi veniam voluptates amet facilis, fugit dicta atque ullam saepe
+                            quisquam, iure enim. Fuga voluptatem asperiores iure cum soluta dolore.</p>
+                    </div>
+                </div>
+                <div class="img-peluqueria">
+                    <img src="{% static 'images/peluqueria.png' %}" width="200" height="200"
+                        style="border-radius: 100%" />
+                    <div class="conteiner-peluqueria">
+                        <h3 class="title">Peluquería</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo optio exercitationem ab
+                            quaerat iure itaque culpa nesciunt sequi eum nulla minus nam numquam ut porro ipsam ratione
+                            repudiandae dolore quod natus illo tempore, nisi obcaecati omnis. Suscipit cupiditate nobis
+                            sapiente, dicta ipsa laboriosam, magni fuga vel dolorem optio tempore aliquam soluta fugiat
+                            hic nostrum ipsam laudantium beatae in perferendis veniam non! Nam, temporibus tenetur earum
+                            sunt aut unde totam? Natus aperiam nulla error recusandae quidem corporis est dolor beatae
+                            necessitatibus, sequi veniam voluptates amet facilis, fugit dicta atque ullam saepe
+                            quisquam, iure enim. Fuga voluptatem asperiores iure cum soluta dolore.</p>
+                    </div>
+                </div>
+                <div class="img-veterinaria">
+                    <img src="{% static 'images/veterinaria.png' %}" width="200" height="200"
+                        style="border-radius: 100%" />
+                    <div class="conteiner-veterinaria">
+                        <h3 class="title">Veterinaria</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo optio exercitationem ab
+                            quaerat iure itaque culpa nesciunt sequi eum nulla minus nam numquam ut porro ipsam ratione
+                            repudiandae dolore quod natus illo tempore, nisi obcaecati omnis. Suscipit cupiditate nobis
+                            sapiente, dicta ipsa laboriosam, magni fuga vel dolorem optio tempore aliquam soluta fugiat
+                            hic nostrum ipsam laudantium beatae in perferendis veniam non! Nam, temporibus tenetur earum
+                            sunt aut unde totam? Natus aperiam nulla error recusandae quidem corporis est dolor beatae
+                            necessitatibus, sequi veniam voluptates amet facilis, fugit dicta atque ullam saepe
+                            quisquam, iure enim. Fuga voluptatem asperiores iure cum soluta dolore.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </main>
+</header>
 {% endblock content %}
