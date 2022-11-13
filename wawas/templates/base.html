@@ -24,7 +24,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-3" style="background: #44cdbd;">
 
         <div class="container">
 
@@ -43,7 +43,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
                 <div class="navbar-nav ms-auto">
-
+                    <a class="nav-link" href="{% url 'home' %}">Inicio</a>
                     <a class="nav-link" href="{% url 'service' %}">Servicios</a>
                     <a class="nav-link" href="{% url 'news' %}">Noticias</a>
                     <a class="nav-link" href="{% url 'contact' %}">Contactos</a>
@@ -75,7 +75,7 @@
 
     </div>
 
-    <footer class="py-3 my-4" style="background: #111111;">
+    <footer class="py-3" style="background: #111111;">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item text-light"><a href="{% url 'home' %}" class="nav-link px-2 text-muted">Inicio</a></li>
             <li class="nav-item text-light"><a href="{% url 'service' %}" class="nav-link px-2 text-muted">Servicios</a></li>
