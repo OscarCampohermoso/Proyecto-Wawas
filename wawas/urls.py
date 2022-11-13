@@ -19,5 +19,5 @@ from wawas_home import views as wawas_home_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', wawas_home_views.home, name='home'),
+    path('', wawas_home_views.home, name='home')
 ]

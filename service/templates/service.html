@@ -1,4 +1,47 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles.css'%}">
+
 {% block content %}
+
+<section class="service">
+    <h3>Tenemos los mejores servicios para tu peludito</h3>
+    <span>¡Échale un ojo!</span>
+</section>
+
+<div class="wave" style="height: 150px; overflow: hidden:"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,128L0,64L1440,64L1440,320L0,320L0,320Z"></path></svg></div>
+
+<section class="conteiner">
+    <div class="conteiner-service">
+        <div class="conteiner-text">
+            <img src="https://www.hogarmania.com/archivos/201707/paseador-de-perros-1280x720x80xX.jpg" alt="" class="img-cuidadores">
+            <h5>Cuidadores</h5>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque cumque beatae porro, ipsam sint voluptatem harum adipisci magni? Unde ipsum voluptatem fuga quam beatae officiis officia suscipit nisi! Explicabo dicta excepturi mollitia laudantium eveniet, sit labore repellendus ducimus nobis sint deserunt ipsum incidunt debitis porro illum aspernatur ut architecto libero nam quidem! Vitae, nemo. Veniam aliquid vel voluptatibus. Blanditiis necessitatibus animi ad perferendis nobis officia quam illo accusantium molestias commodi non quos aspernatur excepturi nesciunt, ab est ex qui consequatur laborum dicta, dolore hic? Accusantium magni, repudiandae delectus doloribus ipsum nam maxime rem consequuntur natus aspernatur deleniti excepturi dolorum at!</p>
+            <img src="https://www.clinicaveterinariacincovillas.com/img/peluqueria-para-mascotas.jpg" alt="" class="img-peluqueria">
+            <h5>Peluquería</h5>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque cumque beatae porro, ipsam sint voluptatem harum adipisci magni? Unde ipsum voluptatem fuga quam beatae officiis officia suscipit nisi! Explicabo dicta excepturi mollitia laudantium eveniet, sit labore repellendus ducimus nobis sint deserunt ipsum incidunt debitis porro illum aspernatur ut architecto libero nam quidem! Vitae, nemo. Veniam aliquid vel voluptatibus. Blanditiis necessitatibus animi ad perferendis nobis officia quam illo accusantium molestias commodi non quos aspernatur excepturi nesciunt, ab est ex qui consequatur laborum dicta, dolore hic? Accusantium magni, repudiandae delectus doloribus ipsum nam maxime rem consequuntur natus aspernatur deleniti excepturi dolorum at!</p>
+            <img src="https://estaticos.muyinteresante.es/uploads/images/article/596c9e255bafe81cf43c986b/veterinaria-perro-golden-fonendo_0.jpg" alt="" class="img-veterinaria">
+            <h5>Veterinaria</h5>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque cumque beatae porro, ipsam sint voluptatem harum adipisci magni? Unde ipsum voluptatem fuga quam beatae officiis officia suscipit nisi! Explicabo dicta excepturi mollitia laudantium eveniet, sit labore repellendus ducimus nobis sint deserunt ipsum incidunt debitis porro illum aspernatur ut architecto libero nam quidem! Vitae, nemo. Veniam aliquid vel voluptatibus. Blanditiis necessitatibus animi ad perferendis nobis officia quam illo accusantium molestias commodi non quos aspernatur excepturi nesciunt, ab est ex qui consequatur laborum dicta, dolore hic? Accusantium magni, repudiandae delectus doloribus ipsum nam maxime rem consequuntur natus aspernatur deleniti excepturi dolorum at!</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="conteiner">
+        <div class="content-instagram">
+            <img src="https://i.pinimg.com/736x/67/03/1e/67031e426eeaa9a5676b13ee4ef7abfe.jpg" alt="">
+        </div>
+        <div class="content-facebook">
+            <img src="https://www.seekpng.com/png/detail/148-1483528_facebook-instagram-youtube-facebook-icon-white-png-transparent.png" alt="">
+        </div>
+        <div class="content-twitter">
+            <img src="data:image/png;base64,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" alt="">
+        </div>
+    </div>
+    <h2 class="title-final">&copy;Wawas Web</h2>
+</footer>
 
 {% endblock content %}
