@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row mb-5 mt-5">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <!--If user_type == customer -->
+                {% if user_type == 'customer' %}
+                    <h2>Registrate como un cliente</h2>
+                {% else %}
+                    <h2>Crea otra cuenta administrador</h2>
+                {% endif %}
+                <hr>
+                <form method="post" novalidate>
+                  {% csrf_token %}
+                  <input type="hidden" name="next" value="{{ next }}">
+                  {{ form|crispy }}
+                  <button type="submit" class="btn btn-success">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+{% endblock %}

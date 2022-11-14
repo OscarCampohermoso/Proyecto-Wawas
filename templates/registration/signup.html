@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <h2>Crear cuenta (vista Administrador)</h2>
+    <p class="lead">Seleccione el tipo de cuenta que desea crear</p>
+    <a href="{% url 'customer_signup' %}" class="btn btn-danger" role="button">Crear cliente</a>
+    <a href="{% url 'admin_signup' %}" class="btn btn-warning" role="button">Crear Administrador</a>
+</div>
+{% endblock %}

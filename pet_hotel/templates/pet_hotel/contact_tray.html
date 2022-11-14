@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+
+</head>
+<body>
+    <div class = "col-sm-12 col-md-12 col-lg-8 col-xl-8">
+        <br><h1>Bandeja de Contactos</h1>
+        <div class="table-responsive py-2"> 
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> ID </th>
+                        <th> Usuario </th>
+                        <th colspan="2"> Mensaje </th>
+                        <th> Revision </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in Personas %}
+                    <tr class="table-primary" style="background: #C4E8E7;">
+                        <td>{{forloop.counter}}</td>
+                        <td>{{c.id}}</td>
+                        <td>{{c.name}}</td>
+                        <td>{{c.message}}</td>
+                        <td> <a href="revisar/{{c.id}}" class="btn btn-info" style="background: #CB9AE2;"> Revisar </a> </td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+{% endblock content %}
