@@ -7,8 +7,7 @@ from django.forms import inlineformset_factory
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
-                                  UpdateView)
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView, UpdateView)
                         
 from ..decorators import admin_required
 from ..forms import AdminSignUpForm

@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-5 mb-5">
-    <h2>Crear cuenta (vista Administrador)</h2>
-    <p class="lead">Seleccione el tipo de cuenta que desea crear</p>
-    <a href="{% url 'customer_signup' %}" class="btn btn-danger" role="button">Crear cliente</a>
-    <a href="{% url 'admin_signup' %}" class="btn btn-warning" role="button">Crear Administrador</a>
+<div class="row" style="margin-top: 200px; margin-bottom: 200px;">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2>Crear cuenta (vista Administrador)</h2>
+                <p class="lead">Seleccione el tipo de cuenta que desea crear</p>
+                <a href="{% url 'customer_signup' %}" class="btn btn-primary" role="button">Crear cliente</a>
+                <a href="{% url 'admin_signup' %}" class="btn btn-secondary" role="button">Crear Administrador</a>
+            </div>
+        </div>
+    </div>
 </div>
+
 {% endblock %}

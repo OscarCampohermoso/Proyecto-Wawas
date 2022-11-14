@@ -40,16 +40,20 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background: #44cdbd;">
-
+    
+    {% if user.is_authenticated %}
+        {% if user.is_admin %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        {% else %}
+            <nav class="navbar navbar-expand-lg navbar-dark" style="background: #00aae4;">
+        {% endif %}
+    {% else %}
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background: #44cdbd;">
+    {% endif %}
         <div class="container">
-
             <a class="navbar-brand" href="{% url 'home' %}">
-            
             <img src="{% static 'images/logo.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top" />
                 Wawas</a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 
