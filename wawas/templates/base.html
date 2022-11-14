@@ -22,11 +22,26 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <script>
+        window.initializeCarousel = () => {
+            $("#carouselExampleSlidesOnly").carousel({ interval: 50 });
+        }
+    </script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <style type="text/css">
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark mb-3" style="background: #44cdbd;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: #44cdbd;">
 
         <div class="container">
 
@@ -69,7 +84,7 @@
 
 
 
-    <div class="container mt-3">
+    <div>
 
         {% block content %}
 

@@ -21,5 +21,15 @@
   
 .img2 {
     border-radius: 50%;
-  }
-  
+}
+
+.nosotros-bg{
+    background-color: rgba(213,243,243,255);
+}
+
+#carouselExampleIndicators .carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    height: 600px;
+    overflow: hidden;
+}
