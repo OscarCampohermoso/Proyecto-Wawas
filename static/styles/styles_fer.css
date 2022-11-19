@@ -57,68 +57,10 @@
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-header{
-    background-color: #dfcae1;
+.service-background{
+    background-color:rgb(236, 212, 236);
 }
 
 .image:hover{
     transform: scale(1.1);
-}
-
-.cerrar{
-    position: absolute;
-    right: 3px;
-    top: 1px;
-    font-size: 20px;
-}
-
-.contenedor-cuidadores{
-    background-color: aliceblue;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
-    width: 30%;
-    color: black;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
-    font-size: 15px;
-    text-align: center;
-    padding: 30px;
-    min-height: 300px;
-    border-radius: 22px;
-    position: absolute;
-    left: 34%;
-    top: 25%;
-    display: none;
-}
-
-.contenedor-peluqueria{
-    background-color: aliceblue;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
-    width: 30%;
-    color: black;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
-    font-size: 15px;
-    text-align: center;
-    padding: 30px;
-    min-height: 300px;
-    border-radius: 22px;
-    position: absolute;
-    left: 34%;
-    top: 25%;
-    display: none;
-}
-
-.contenedor-veterinaria{
-    background-color: aliceblue;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
-    width: 30%;
-    color: black;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
-    font-size: 15px;
-    text-align: center;
-    padding: 30px;
-    min-height: 300px;
-    border-radius: 22px;
-    position: absolute;
-    left: 34%;
-    top: 25%;
-    display: none;
 }
