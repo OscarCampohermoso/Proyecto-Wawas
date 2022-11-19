@@ -7,61 +7,99 @@
     <h1>Tenemos los mejores servicios para tu peludito</h1>
     <h2>¡Échale un ojo!</h2>
     <a href="{% url 'login' %}" class="btn">SACAR CITA</a>
+    <h3>Haz click en las imagenes para saber más!</h3>
 </section>
 
 <header>
     <main>
-        <div class="container">
+        <div class="contenedor-cuidadores" id="cuidadores">
+            <div class="cerrar"><a href="javascript:cerrarC()">Ⓧ</a></div>
+            <h3 class="title">Cuidadores</h3>
+            Sabemos que los principales requisitos que debe cumplir un buen canguro de mascotas son la
+            seriedad, el sentido de la responsabilidad, disponer de tiempo libre, y experiencia previa en el cuidado de
+            animales, pero si hay una característica fundamental que todos deben tener es el de amar y
+            ofrecer cariño a los animales.
+            <br>Los servicios de cuidado de mascotas van desde una simple caminata hasta el cuidado por
+            varios días de la mascota, en tu casa o en la casa de la familia anfitriona.
+        </div>
+
+        <div class="contenedor-peluqueria" id="peluqueria">
+            <div class="cerrar"><a href="javascript:cerrarP()">Ⓧ</a></div>
+            <h3 class="title">Peluquería</h3>
+            Nuestros peluqueros caninos son profesionales especializados en higiene y estética que tienen como
+            objetivo preservar la salud de las mascotas. No se trata solo de cumplir una función
+            estética, sino de cuidar la higiene de la manera más óptima posible para ofrecerle mejores
+            cuidados y mejorar su calidad de vida. En la estética canina no solo mejora el aspecto
+            físico del animal, sino que existen también ciertas razones médicas.
+            <br>El objetivo es mejorar la higiene y la apariencia del can, por lo que sus funciones
+            principales son peinar, limpiar, cortar el pelo y cepillar. Aunque también realizan tareas
+            de corte de uñas, limpieza del canal auditivo, la aplicación de tratamientos para mejorar el
+            pelaje e incluso extraer posibles parásitos externos.
+        </div>
+
+        <div class="contenedor-veterinaria" id="veterinaria">
+            <div class="cerrar"><a href="javascript:cerrarV()">Ⓧ</a></div>
+            <h3 class="title">Veterinaria</h3>
+            Para tu pequeño amigo contamos con médicos veterinarios con los estudios y certificados
+            necesarios para poder hacer una valoración de calidad para nuestro compañero, diagnósticos y
+            el tratamiento más adecuado para nuestro peludo. Así que, acerciórate de elegir a un buen
+            especialista con nuestros servicios de veterinaria.
+            <br>Contamos con la infraestructura decuada para que tú y tu mascota se sientan como en casa, todos
+            nuestros instrumentos están esterilizados y desinfectados para que tu peludito siempre se
+            encuentre seguro.
+        </div>
+
+        <div class="container text-center">
             <div class="row align-items-start">
-                <div class="img-cuidadores mt-3 mb-3">
-                    <img src="{% static 'images/cuidadores.png' %}" width="200" height="200"
-                        style="border-radius: 100%" />
-                    <div class="conteiner-cuidadores ms-3">
-                        <h3 class="title">Cuidadores</h3>
-                        <p>Sabemos que los principales requisitos que debe cumplir un buen canguro de mascotas son la
-                            seriedad, el sentido
-                            de la responsabilidad, disponer de tiempo libre, y experiencia previa en el cuidado de
-                            animales, pero si hay una característica fundamental que todos deben tener es el de amar y
-                            ofrecer cariño a los animales.</p>
-                        <p>Los servicios de cuidado de mascotas van desde una simple caminata hasta el cuidado por
-                            varios días de la mascota, en tu casa o en la casa de la familia anfitriona.</p>
+                <div class="col">
+                    <br>
+                    <div class="image">
+                        <a href="javascript:abrirC()" class="boton"><img src="{% static 'images/cuidadores.png' %}" style="border-radius: 100%" width="200" height="200" /></a>
                     </div>
+                    <br>
+                    <h3 class="title">CUIDADORES</h3>
                 </div>
-                <div class="img-peluqueria mt-3 mb-3">
-                    <img src="{% static 'images/peluqueria.png' %}" width="200" height="200"
-                        style="border-radius: 100%" />
-                    <div class="conteiner-peluqueria ms-3">
-                        <h3 class="title">Peluquería</h3>
-                        <p>Nuestros peluqueros caninos son profesionales especializados en higiene y estética que tienen
-                            como
-                            objetivo preservar la salud de las mascotas. No se trata solo de cumplir una función
-                            estética, sino de cuidar la higiene de la manera más óptima posible para ofrecerle mejores
-                            cuidados y mejorar su calidad de vida. En la estética canina no solo mejora el aspecto
-                            físico del animal, sino que existen también ciertas razones médicas.</p>
-                        <p>El objetivo es mejorar la higiene y la apariencia del can, por lo que sus funciones
-                            principales son peinar, limpiar, cortar el pelo y cepillar. Aunque también realizan tareas
-                            de corte de uñas, limpieza del canal auditivo, la aplicación de tratamientos para mejorar el
-                            pelaje e incluso extraer posibles parásitos externos.</p>
+                <div class="col">
+                    <br>
+                    <div class="image">
+                        <a href="javascript:abrirP()" class="boton"><img src="{% static 'images/peluqueria.png' %}" style="border-radius: 100%" width="200" height="200" /></a>
                     </div>
+                    <br>
+                    <h3 class="title">PELUQUERIA</h3>
                 </div>
-                <div class="img-veterinaria mt-3 mb-3">
-                    <img src="{% static 'images/veterinaria.png' %}" width="200" height="200"
-                        style="border-radius: 100%" />
-                    <div class="conteiner-veterinaria ms-3">
-                        <h3 class="title">Veterinaria</h3>
-                        <p>Para tu pequeño amigo contamos con médicos veterinarios con los estudios y certificados
-                            necesarios para poder hacer una valoración de calidad para nuestro compañero, diagnósticos y
-                            el tratamiento más adecuado para nuestro peludo. Así que, acerciórate de elegir a un buen
-                            especialista con nuestros servicios de veterinaria.</p>
-                        <p>Contamos con la infraestructura decuada para que tú y tu mascota se sientan como en casa,
-                            todos
-                            nuestros instrumentos están esterilizados y desinfectados para que tu peludito siempre se
-                            encuentre
-                            seguro.</p>
+                <div class="col">
+                    <br>
+                    <div class="image">
+                        <a href="javascript:abrirV()" class="boton"><img src="{% static 'images/veterinaria.png' %}" style="border-radius: 100%" width="200" height="200" /></a>
                     </div>
+                    <br>
+                    <h3 class="title">VETERINARIA</h3><br>
                 </div>
             </div>
         </div>
+
+        <script>
+            function abrirC(){
+                document.getElementById("cuidadores").style.display="block";
+            }
+            function cerrarC(){
+                document.getElementById("cuidadores").style.display="none";
+            }
+
+            function abrirP(){
+                document.getElementById("peluqueria").style.display="block";
+            }
+            function cerrarP(){
+                document.getElementById("peluqueria").style.display="none";
+            }
+
+            function abrirV(){
+                document.getElementById("veterinaria").style.display="block";
+            }
+            function cerrarV(){
+                document.getElementById("veterinaria").style.display="none";
+            }
+        </script>
     </main>
 </header>
 {% endblock content %}
