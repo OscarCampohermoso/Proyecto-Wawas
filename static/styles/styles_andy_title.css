@@ -1,4 +1,6 @@
-.art{
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito+Sans:wght@700&family=Paytone+One&family=Raleway:wght@100&display=swap');
+
+.art {
     background-color: rgba(230, 230, 250, 0.76);
     padding: 3mm;
     border: 1mm;
@@ -6,7 +8,7 @@
     border-color: rgba(37, 37, 39, 0.788);
     border-style: solid;
 
-    text-align:center ;
+    text-align: center;
     font-family: monospace;
     font-size: 5mm;
 
@@ -18,13 +20,13 @@
 }
 
 
-  
+
 .img2 {
     border-radius: 50%;
 }
 
-.nosotros-bg{
-    background-color: rgba(213,243,243,255);
+.nosotros-bg {
+    background-color: rgba(213, 243, 243, 255);
 }
 
 #carouselExampleIndicators .carousel-item img {
@@ -36,43 +38,45 @@
 }
 
 .title1 {
-    -webkit-text-stroke: 2px black;
     font-size: 50px;
     color: #fff;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-   
+    font-family: Impact, 'Archivo Black', 'Arial Narrow Bold', sans-serif;
+
 }
+
 .subtitle1 {
     font-size: 20px;
     font-weight: 300;
     color: rgb(255, 255, 255);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, 'Nunito Sans', Tahoma, sans-serif;
 }
+
 .title2 {
-    -webkit-text-stroke: 2px black;
     font-size: 50px;
     color: #fff;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, 'Archivo Black', 'Arial Narrow Bold', sans-serif;
 }
+
 .subtitle2 {
     font-size: 20px;
     font-weight: 300;
     color: rgb(255, 255, 255);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, 'Nunito Sans', Tahoma, sans-serif;
 }
+
 .title3 {
-    -webkit-text-stroke: 2px black;
     font-size: 50px;
     color: #fff;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, 'Archivo Black', 'Arial Narrow Bold', sans-serif;
 }
+
 .subtitle3 {
     font-size: 20px;
     font-weight: 300;
     color: rgb(255, 255, 255);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, 'Nunito Sans', Tahoma, sans-serif;
 }
 
-.imgbtn:hover{
+.imgbtn:hover {
     transform: scale(1.1);
 }
