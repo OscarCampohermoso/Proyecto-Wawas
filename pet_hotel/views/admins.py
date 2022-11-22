@@ -1,4 +1,4 @@
-from django.contrib import messages
+from django.contrib import messages, admin
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
@@ -11,7 +11,7 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView, 
                         
 from ..decorators import admin_required
 from ..forms import AdminSignUpForm
-from ..models import User
+from ..models import User, Contact
 
 class AdminSignUpView(CreateView):
     model = User
@@ -37,3 +37,4 @@ class ProfileAdminView(UpdateView):
     def get_object(self):
         return self.request.user
 
+admin.site.register(Contact)

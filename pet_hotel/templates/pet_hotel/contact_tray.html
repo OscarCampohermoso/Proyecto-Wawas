@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<head>
-
-</head>
 <body>
-    <div class = "col-sm-12 col-md-12 col-lg-8 col-xl-8">
-        <br><h1>Bandeja de Contactos</h1>
-        <div class="table-responsive py-2"> 
-            <table class="table table-striped">
+    <section class="fondo2">
+    <div class = "row">
+        <div class="col-12 col-md-10 offset-md-1">
+            <br><br>
+            <br><h1>Bandeja de Contactos</h1>
+        <div class="card">
+        <div class="card-body" style="background: #C4E8E7;">
+        
+        <div class="table-responsive py-2" > 
+            <table class="table">
                 <thead>
                     <tr>
                         <th> # </th>
@@ -18,12 +21,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for c in Personas %}
-                    <tr class="table-primary" style="background: #C4E8E7;">
+                    {% for c in messages_contacts %}
+                    <tr class="table">
                         <td>{{forloop.counter}}</td>
                         <td>{{c.id}}</td>
                         <td>{{c.name}}</td>
                         <td>{{c.message}}</td>
+                        <td></td>
                         <td> <a href="revisar/{{c.id}}" class="btn btn-info" style="background: #CB9AE2;"> Revisar </a> </td>
                         
                     </tr>
@@ -32,5 +36,10 @@
             </table>
         </div>
     </div>
+    </div>
+
+</div>
+</div>
+</section>
 </body>
 {% endblock content %}
