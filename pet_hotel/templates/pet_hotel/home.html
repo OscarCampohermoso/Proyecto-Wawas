@@ -209,33 +209,41 @@
 
   <div class="text-center nosotros-bg">
     <div class="row align-items-start">
-        <div class="col">
-            <br><br>
-            <img src="{% static 'images/imgNosotros.png' %}" style="border-radius: 100%" width="200" height="200" />
-            <br> 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                Nosotros
-              </button>
-              <br><br>
-        </div>
-        <div class="col">
-            <br><br>
-            <img src="{% static 'images/imgMision.png' %}" style="border-radius: 100%" width="200" height="200" />
-            <br>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                Mision
-              </button>
-              <br><br>
-        </div>
-        <div class="col">
-            <br><br>
-            <img src="{% static 'images/imgVision.png' %}" style="border-radius: 100%" width="200" height="200" />
-            <br>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
-                Vision
-              </button>
-              <br><br>
-        </div>
+      <div class="col">
+           <br><br>
+            <!--img src="{% static 'images/imgNosotros.png' %}" style="border-radius: 100%" width="200" height="200" /> -->
+        <div class="imgbtn">
+          <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+              style="border-radius: 100%" width="200" height="200"><img src="{% static 'images/imgNosotros.png' %}" 
+              style="border-radius: 100%" width="200" height="200" /> </a>
+        </div>          
+          <br> 
+          <h4 class="title"> NOSOTROS</h4>
+        </div> 
+
+    <div class="col">
+          <br><br>
+      <div class="imgbtn">
+         <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"
+             style="border-radius: 100%" width="200" height="200"><img src="{% static 'images/imgMision.png' %}" 
+             style="border-radius: 100%" width="200" height="200" /> </a>
+       </div>          
+         <br> 
+         <h4 class="title"> MISION</h4>
+       </div> 
+
+    <div class="col">
+        <br><br>
+     <div class="imgbtn">
+       <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3"
+           style="border-radius: 100%" width="200" height="200"><img src="{% static 'images/imgVision.png' %}" 
+           style="border-radius: 100%" width="200" height="200" /> </a>
+     </div>          
+       <br> 
+       <h4 class="title"> VISION</h4>
+     </div> 
+
     </div>
+  </div>
 
 {% endblock content %}
