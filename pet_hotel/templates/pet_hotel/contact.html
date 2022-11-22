@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<body>
-    <div class="contact_register">
-        <div class="row mb-5 mt-5">
-            <div class="col-12 col-md-6 offset-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h2>Contactanos</h2>
-                        <form method="post">
-                            {% csrf_token %}
-                            <input type="hidden" name="next" value="{{ next }}">
-                            {{contact_form|crispy}}
-                            <div class="d-grid gap-2 col-2 mx-auto">
-                                <button type="submit" class="btn btn-success" style="background: #CB9AE2;">Enviar</button>
-                            </div>
-                        </form>
-                        {{contact_message}}
-                    </div>
+
+<div class="contact_register">
+    <div class="row mb-5 mt-5">
+        <div class="col-12 col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Contactanos</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}">
+                        {{contact_form|crispy}}
+                        <div class="d-grid gap-2 col-2 mx-auto">
+                            <button type="submit" class="btn btn-success" style="background: #CB9AE2;">Enviar</button>
+                        </div>
+                    </form>
+                    {{contact_message}}
                 </div>
             </div>
         </div>
     </div>
-</body>
+</div>
+
 {% endblock content %}
