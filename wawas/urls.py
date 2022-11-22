@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from pet_hotel.views import pet_hotel, customers, admins
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +26,4 @@ urlpatterns = [
     path('accounts/signup/', pet_hotel.SignUpView.as_view(), name='signup'),
     path('accounts/signup/customers/', customers.CustomerSignUpView.as_view(), name='customer_signup'),
     path('accounts/signup/admins/', admins.AdminSignUpView.as_view(), name='admin_signup'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)

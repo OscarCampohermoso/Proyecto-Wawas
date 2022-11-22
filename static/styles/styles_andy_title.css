@@ -1,0 +1,78 @@
+.art{
+    background-color: rgba(230, 230, 250, 0.76);
+    padding: 3mm;
+    border: 1mm;
+    border-radius: 100cm;
+    border-color: rgba(37, 37, 39, 0.788);
+    border-style: solid;
+
+    text-align:center ;
+    font-family: monospace;
+    font-size: 5mm;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    margin: 100cm;
+}
+
+
+  
+.img2 {
+    border-radius: 50%;
+}
+
+.nosotros-bg{
+    background-color: rgba(213,243,243,255);
+}
+
+#carouselExampleIndicators .carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    height: 600px;
+    overflow: hidden;
+
+}
+
+.title1 {
+    -webkit-text-stroke: 2px black;
+    font-size: 50px;
+    color: #fff;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   
+}
+.subtitle1 {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgb(255, 255, 255);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.title2 {
+    -webkit-text-stroke: 2px black;
+    font-size: 50px;
+    color: #fff;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.subtitle2 {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgb(255, 255, 255);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.title3 {
+    -webkit-text-stroke: 2px black;
+    font-size: 50px;
+    color: #fff;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.subtitle3 {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgb(255, 255, 255);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.imgbtn:hover{
+    transform: scale(1.1);
+}
