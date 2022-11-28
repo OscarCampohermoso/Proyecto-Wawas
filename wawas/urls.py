@@ -19,6 +19,7 @@ from pet_hotel.views import pet_hotel, customers, admins
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pet_hotel.urls')),
@@ -27,3 +28,6 @@ urlpatterns = [
     path('accounts/signup/customers/', customers.CustomerSignUpView.as_view(), name='customer_signup'),
     path('accounts/signup/admins/', admins.AdminSignUpView.as_view(), name='admin_signup'),
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

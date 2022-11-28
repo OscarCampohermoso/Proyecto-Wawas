@@ -12,9 +12,16 @@ class Customer(models.Model):
     address = models.CharField(max_length=200, blank=True)
     phone = models.CharField(max_length=200, blank=True)
     email = models.CharField(max_length=200, blank=True)
+    profile_image = models.ImageField(upload_to='profile_images', blank=True, null=True)
 
     def __str__(self):
         return self.name
+
+class Admin(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+
+    def __str__(self):
+        return self.user.username
 
 class Contact (models.Model):
     name=models.CharField(max_length=50)
@@ -25,4 +32,14 @@ class Contact (models.Model):
     def __str__(self):     
         return self.name
 
+class Pet(models.Model):
+    name = models.CharField(max_length=200, blank=True)
+    date_of_birth = models.DateField(null=True, blank=True)
+    breed = models.CharField(max_length=200, blank=True)
+    size = models.CharField(max_length=200, blank=True)
+    description = models.CharField(max_length=200, blank=True)
+    image = models.ImageField(upload_to='pet_images', blank=True, null=True)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+        return self.name

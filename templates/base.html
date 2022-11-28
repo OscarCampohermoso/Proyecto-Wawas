@@ -77,9 +77,9 @@
                             <a class="nav-link" href="">Contactos</a>
                             <a class="nav-link" href="{% url 'signup' %}">Agregar Cuenta</a>
                         {% else %}
-                            <a class="nav-link" href="">Perfil</a>
-                            <a class="nav-link" href="">Servicios</a>
-                            <a class="nav-link" href="">Noticias</a>
+                            <a class="nav-link" href="{% url 'customers:profile_customers' %}">Perfil</a>
+                            <a class="nav-link" href="{% url 'customers:service_customers' %}">Servicios</a>
+                            <a class="nav-link" href="{% url 'customers:news_customers' %}">Noticias</a>
                             <a class="nav-link" href="{% url 'contact' %}">Contactos</a>
                         {% endif %}
                     {% else %}
@@ -90,7 +90,7 @@
                     {% endif %}
                     {% if user.is_authenticated %}
                     <a class="nav-link" href="{% url 'logout' %}">
-                        Logout ({{ user.username }})
+                        Cerrar Sesión ({{ user.username }})
                     </a>
                     {% else %}
                         <a class="nav-link" href="{% url 'login' %}">Ingresar</a>

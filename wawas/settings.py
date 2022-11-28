@@ -131,6 +131,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+MEDIA_URL = 'media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/images')
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom Django auth settings
@@ -160,3 +164,4 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LANGUAGE_CODE = 'es'
+

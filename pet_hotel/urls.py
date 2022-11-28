@@ -9,8 +9,10 @@ urlpatterns = [
 
     path('customers/', include(([
         path('profile/', customers.ProfileCustomerView.as_view(), name='profile_customers'),
-        # path('news/', customers.NewsCustomerView.as_view(), name='news_customers'),
-        # path('service/', customers.ServiceCustomerView.as_view(), name='service_customers'),
+        path('news/', customers.news, name='news_customers'),
+        path('service/', customers.service, name='service_customers'),
+        path('deletepets/<int:pk>/', customers.delete_pets, name='delete_pets'),
+        #path('appointment/', customers.ApointmentCustomerView.as_view(), name='appointment_customers'),
     ], 'pet_hotel'), namespace='customers')),
 
     path('admins/', include(([

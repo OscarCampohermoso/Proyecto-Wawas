@@ -10,7 +10,7 @@ from django.views.generic import CreateView, UpdateView
 
 from ..decorators import customer_required
 from ..forms import CustomerSignUpForm
-from ..models import User, Customer
+from ..models import User, Customer, Pet
 
 class CustomerSignUpView(CreateView):
     model = User
@@ -29,10 +29,46 @@ class CustomerSignUpView(CreateView):
 
 @method_decorator([login_required, customer_required], name='dispatch')
 class ProfileCustomerView(UpdateView):
-    model = User
-    form_class = CustomerSignUpForm
+    model = Customer
     template_name = 'pet_hotel/customers/profile_customer.html'
+    fields = ['name', 'address', 'phone', 'email', 'profile_image']
     success_url = reverse_lazy('customers:profile_customers')
 
+    def get_form(self, form_class=None):
+        form = super(ProfileCustomerView, self).get_form()
+        form.fields['name'].label = 'Nombre'
+        form.fields['address'].label = 'Dirección'
+        form.fields['phone'].label = 'Teléfono'
+        form.fields['email'].label = 'Correo'
+        form.fields['profile_image'].label = 'Imagen de perfil'
+        return form
+
+    
+    # get pets model
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pets'] = Pet.objects.filter(customer=self.request.user.customer)
+        return context
+
     def get_object(self):
-        return self.request.user
+        return self.request.user.customer
+
+def delete_pets(request, pk):
+    pet = get_object_or_404(Pet, pk=pk)
+    pet.delete()
+    messages.success(request, 'Mascota eliminada')
+    return redirect('customers:profile_customers')
+
+@login_required
+@customer_required
+def news(request):
+    return render(request, 'pet_hotel/customers/news_customer.html')
+
+@login_required
+@customer_required
+def service(request):
+    return render(request, 'pet_hotel/customers/service_customer.html')
+
+
+# @method_decorator([login_required, customer_required], name='dispatch')
+# class ApointmentCustomerView(CreateView):

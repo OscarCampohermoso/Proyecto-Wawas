@@ -2,9 +2,16 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.forms.utils import ValidationError
+from django.forms import ModelForm
 
 
-from pet_hotel.models import User, Customer, Contact
+from pet_hotel.models import User, Customer, Contact, Admin
+
+# class CustomerForm(ModelForm):
+#     class Meta:
+#         model = Customer
+#         fields = ['name', 'address', 'phone', 'email', 'profile_image']
+#         labels = { 'name': 'Nombre', 'address': 'Dirección', 'phone': 'Teléfono', 'email': 'Correo', 'profile_image': 'Imagen de perfil' }
 
 
 class CustomerSignUpForm(UserCreationForm):
@@ -12,9 +19,6 @@ class CustomerSignUpForm(UserCreationForm):
     dirección = forms.CharField(max_length=200, required=True)
     telefono = forms.CharField(max_length=200, required=True)
     email = forms.CharField(max_length=200, required=True)
-
-    class Meta(UserCreationForm.Meta):
-        model = User
 
     @transaction.atomic
     def save(self):
@@ -26,8 +30,20 @@ class CustomerSignUpForm(UserCreationForm):
         customer.address = self.cleaned_data.get('dirección')
         customer.phone = self.cleaned_data.get('telefono')
         customer.email = self.cleaned_data.get('email')
+        
         customer.save()
         return user
+    
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ('username', 'nombre', 'dirección', 'telefono', 'email', 'password1', 'password2')
+        labels = { 'username': 'Nombre de usuario', 'nombre': 'Nombre', 'dirección': 'Dirección', 'telefono': 'Teléfono', 'email': 'Correo electrónico', 'password1': 'Contraseña', 'password2': 'Confirmar contraseña' }
+    
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        for fieldname in ['username', 'password1', 'password2']:
+            self.fields[fieldname].help_text = None
+
 
 class AdminSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -38,6 +54,8 @@ class AdminSignUpForm(UserCreationForm):
         user.is_admin = True
         if commit:
             user.save()
+            admin = Admin.objects.create(user=user)
+            admin.save()
         return user
 
 class ContactForm(forms.ModelForm):

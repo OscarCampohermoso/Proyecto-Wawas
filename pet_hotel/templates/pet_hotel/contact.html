@@ -12,9 +12,7 @@
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ next }}">
                         {{contact_form|crispy}}
-                        <div class="d-grid gap-2 col-2 mx-auto">
-                            <button type="submit" class="btn btn-success" style="background: #CB9AE2;">Enviar</button>
-                        </div>
+                        <button type="submit" class="btn btn-success" style="background: #CB9AE2;">Enviar</button>
                     </form>
                     {{contact_message}}
                 </div>

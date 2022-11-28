@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="album py-5">
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3">
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="{% static 'images/cuidador_perros_1.jpg' %}" width="100%" height="225" />
+                    <div class="card-body">
+                        <h5 class="card-title">Cuidadores</h5>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Sacar Cita</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="{% static 'images/peluqueria_servicios.jpg' %}" width="100%" height="225" />
+                    <div class="card-body">
+                        <h5 class="card-title">Peluqueria</h5>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Sacar Cita</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="{% static 'images/veterinaria_servicios.jpg' %}" width="100%" height="225" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">Veterinaria</h5>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Sacar Cita</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="card text-center">
+                    <div class="card-header">
+                        Encuentra un cuidador perfecto para ti y tu mascota
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Busca y contacta con cuidadores de confianza y con experiencia cerca de ti
+                        </h5>
+                        <p class="card-text">Una alternativa a los servicios que proporcionamos.</p>
+                        <a href="#" class="btn btn-primary">Buscar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
