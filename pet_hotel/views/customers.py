@@ -42,7 +42,6 @@ class ProfileCustomerView(UpdateView):
         form.fields['email'].label = 'Correo'
         form.fields['profile_image'].label = 'Imagen de perfil'
         return form
-
     
     # get pets model
     def get_context_data(self, **kwargs):
@@ -52,11 +51,68 @@ class ProfileCustomerView(UpdateView):
 
     def get_object(self):
         return self.request.user.customer
+    
 
+@method_decorator([login_required, customer_required], name='dispatch')
+class PetCreateView(CreateView):
+    model = Pet
+    fields = ['name', 'date_of_birth', 'breed', 'size', 'description', 'image']
+    template_name = 'pet_hotel/customers/pet_form.html'
+    success_url = reverse_lazy('customers:profile_customers')
+
+    def get_form(self, form_class=None):
+        form = super(PetCreateView, self).get_form()
+        form.fields['name'].label = 'Nombre'
+        form.fields['date_of_birth'].widget.input_type = 'date'
+        form.fields['date_of_birth'].label = 'Fecha de nacimiento'
+        form.fields['breed'].label = 'Raza'
+        form.fields['size'].label = 'Tamaño'
+        form.fields['description'].label = 'Descripción'
+        form.fields['image'].label = 'Imagen'
+        return form
+
+    def form_valid(self, form):
+        pet = form.save(commit=False)
+        pet.customer = self.request.user.customer
+        pet.save()
+        return redirect('customers:profile_customers')
+
+    def __str__(self):
+        return self.name
+
+@method_decorator([login_required, customer_required], name='dispatch')
+class PetUpdateView(UpdateView):
+    model = Pet
+    fields = ['name', 'date_of_birth', 'breed', 'size', 'description', 'image']
+    template_name = 'pet_hotel/customers/pet_form.html'
+    success_url = reverse_lazy('customers:profile_customers')
+
+    def get_form(self, form_class=None):
+        form = super(PetUpdateView, self).get_form()
+        form.fields['name'].label = 'Nombre'
+        form.fields['date_of_birth'].widget.input_type = 'date'
+        form.fields['date_of_birth'].label = 'Fecha de nacimiento'
+        form.fields['breed'].label = 'Raza'
+        form.fields['size'].label = 'Tamaño'
+        form.fields['description'].label = 'Descripción'
+        form.fields['image'].label = 'Imagen'
+        return form
+
+    def form_valid(self, form):
+        pet = form.save(commit=False)
+        pet.customer = self.request.user.customer
+        pet.save()
+        return redirect('customers:profile_customers')
+
+    def __str__(self):
+        return self.name
+
+@login_required
+@customer_required
 def delete_pets(request, pk):
-    pet = get_object_or_404(Pet, pk=pk)
+    pet = Pet.objects.get(id=pk)
     pet.delete()
-    messages.success(request, 'Mascota eliminada')
+    messages.success(request, 'Mascota eliminada correctamente')
     return redirect('customers:profile_customers')
 
 @login_required

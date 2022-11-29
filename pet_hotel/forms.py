@@ -7,12 +7,6 @@ from django.forms import ModelForm
 
 from pet_hotel.models import User, Customer, Contact, Admin
 
-# class CustomerForm(ModelForm):
-#     class Meta:
-#         model = Customer
-#         fields = ['name', 'address', 'phone', 'email', 'profile_image']
-#         labels = { 'name': 'Nombre', 'address': 'Dirección', 'phone': 'Teléfono', 'email': 'Correo', 'profile_image': 'Imagen de perfil' }
-
 
 class CustomerSignUpForm(UserCreationForm):
     nombre = forms.CharField(max_length=200, required=True)

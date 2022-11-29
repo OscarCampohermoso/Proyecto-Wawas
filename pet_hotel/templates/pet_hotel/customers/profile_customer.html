@@ -44,7 +44,7 @@
                         <h3 style="text-align: center">Mis mascotas</h3>
                     </div>
                     <div class="col-12">
-                        <a href="" class="btn btn-info">Agregar mascota</a>
+                        <a href="{% url 'customers:create_pets' %}" class="btn btn-info">Agregar mascota</a>
                     </div>
                 </div>
                 
@@ -64,8 +64,8 @@
                             <hr>
                             <!-- A button group  -->
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="" class="btn btn-info">Editar</a>
-                                <a href="" class="btn btn-danger">Eliminar</a>
+                                <a href="{% url 'customers:update_pets' pk=pet.id %}" class="btn btn-info">Editar</a>
+                                <a href="{% url 'customers:delete_pets' pk=pet.id %}" class="btn btn-danger">Eliminar</a>
                             </div>
                         </div>
                     </div>
