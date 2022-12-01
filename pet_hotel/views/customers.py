@@ -81,6 +81,7 @@ class PetCreateView(CreateView):
         pet = form.save(commit=False)
         pet.customer = self.request.user.customer
         pet.save()
+        messages.success(self.request, 'Mascota agregada correctamente')
         return redirect('customers:profile_customers')
 
     def __str__(self):
@@ -111,6 +112,7 @@ class PetUpdateView(UpdateView):
         pet = form.save(commit=False)
         pet.customer = self.request.user.customer
         pet.save()
+        messages.success(self.request, 'Mascota actualizada con éxito')
         return redirect('customers:profile_customers')
 
     def __str__(self):
@@ -132,12 +134,16 @@ def news(request):
 @login_required
 @customer_required
 def service(request):
-    return render(request, 'pet_hotel/customers/service_customer.html')
+    # get all appointments as get context data
+    appointments = Appointment.objects.filter(customer=request.user.customer)
+    return render(request, 'pet_hotel/customers/service_customer.html', {'appointments': appointments})
 
 
 @login_required
 @customer_required
 def appointment(request, type):
+    # get the customer that is logged in
+    customer = Customer.objects.get(user=request.user)
     # get the pets of the customer that is logged in
     pets = Pet.objects.filter(customer=request.user.customer)
     # make a combobox with the pets of the customer
@@ -145,14 +151,14 @@ def appointment(request, type):
     for pet in pets:
         CHOICES.append((pet.id, pet.name))
     if request.method == 'POST':
-        form = AppointmentForm(request.POST, initial={'type': type})
+        form = AppointmentForm(request.POST, initial={'type': type, 'customer': customer})
         if form.is_valid():
             appointment = form.save(commit=False)
             appointment.customer = request.user.customer
             appointment.pet = Pet.objects.get(id=request.POST['pet'])
             appointment.save()
             messages.success(request, 'Cita creada correctamente')
-            return redirect('customers:profile_customers')
+            return redirect('customers:service_customers')
     else:
         form = AppointmentForm()
         form.fields['pet'].widget = Select(choices=CHOICES)

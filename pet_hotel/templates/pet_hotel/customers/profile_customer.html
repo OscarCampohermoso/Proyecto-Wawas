@@ -13,6 +13,34 @@
 
 <br>
 <div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <div class="alert alert-primary" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <div class="alert alert-warning" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
     <div class="row mb-5 mt-5">
         <div class="col-md-3">
             <div class="card card-body">
@@ -47,7 +75,7 @@
                         <a href="{% url 'customers:create_pets' %}" class="btn btn-info">Agregar mascota</a>
                     </div>
                 </div>
-                
+
                 <hr>
                 <div class="row">
                     {% for pet in pets %}
@@ -58,14 +86,14 @@
                             {% if pet.image %}
                             <img class="profile-pic" src="{{ pet.image.url }}" alt="Profile Image">
                             {% else %}
-                            <img class="profile-pic" src="{% static 'images/profile/dog.jpg' %}"
-                                alt="Profile Image">
+                            <img class="profile-pic" src="{% static 'images/profile/dog.jpg' %}" alt="Profile Image">
                             {% endif %}
                             <hr>
                             <!-- A button group  -->
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a href="{% url 'customers:update_pets' pk=pet.id %}" class="btn btn-info">Editar</a>
-                                <a href="{% url 'customers:delete_pets' pk=pet.id %}" class="btn btn-danger">Eliminar</a>
+                                <a href="{% url 'customers:delete_pets' pk=pet.id %}"
+                                    class="btn btn-danger">Eliminar</a>
                             </div>
                         </div>
                     </div>

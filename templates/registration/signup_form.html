@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load crispy_forms_tags %} 
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="row mb-5 mt-5">
@@ -14,6 +14,30 @@
                 <h2>Crea otra cuenta administrador</h2>
                 {% endif %}
                 <hr>
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                <div class="alert alert-primary" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                <div class="alert alert-warning" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
                 <form method="post" novalidate>
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ next }}">

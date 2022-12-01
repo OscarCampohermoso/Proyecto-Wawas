@@ -78,15 +78,15 @@ class ContactForm(forms.ModelForm):
 class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
-        fields = ('date', 'time', 'request', 'type', 'pet')
+        fields = ('date', 'time', 'request', 'type', 'pet', 'customer')
         CHOICES =  (('Cuidadores', 'Cuidadores'), ('Peluqueria', 'Peluqueria'), ('Veterinaria', 'Veterinaria'))
 
         labels = {
         'date': 'Fecha',
         'time': 'Hora',
-        'request': 'Solicitud',
-        'type': 'Tipo',
-        'pet': 'Mascota',
+        'request': 'Solicitud (opcional)',
+        'type': 'Tipo de servicio',
+        'pet': 'Mascota (opcional)',
         }
         widgets = {
             'date': forms.DateInput(attrs={'class':'form-control'}),
@@ -94,4 +94,6 @@ class AppointmentForm(forms.ModelForm):
             'request': forms.Textarea(attrs={'class':'form-control'}),
             'type': forms.Select(attrs={'class':'form-control'}, choices=CHOICES),
             'pet': forms.Select(attrs={'class':'form-control'}),
+            # hide customer field
+            'customer': forms.HiddenInput(),
         }

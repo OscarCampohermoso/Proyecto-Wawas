@@ -8,12 +8,29 @@
 <div class="container">
     <div class="row my-5">
         <div class="col-12 col-md-6 offset-md-3">
+            <!-- a return button -->
+            <a href="{% url 'customers:service_customers' %}" class="btn btn-danger mb-3"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</a>
             <div class="card card-body">
                 <form method="POST" action="" enctype="multipart/form-data">
 
                     {% csrf_token %}
                     {{ form|crispy }}
-
+                    <!--create a card to a button to create a pet-->
+                    <a href="{% url 'customers:create_pets' %}">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-11">
+                                    Si aun no registraste a tu mascota aun estas a tiempo
+                                </div>
+                                <div class="col-1" id="logo_form">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                
                     <button type="submit" class="btn btn-primary">Reservar</button>
                 </form>
             </div>

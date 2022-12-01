@@ -3,7 +3,14 @@
 {% load static %}
 <div class="album py-5">
     <div class="container">
-
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ message }}
+          </div>
+        {% endfor %}
+        {% endif %}
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3">
             <div class="col">
                 <div class="card shadow-sm">
@@ -54,6 +61,42 @@
                         <a href="#" class="btn btn-primary">Buscar</a>
                     </div>
                 </div>
+            </div>
+            <div class="col-12 mt-5 bg-light table-responsive">
+                <!--Title for the appointments -->
+                <h3 class="text-center py-2">Mis Citas</h3>
+                <!--Create a table with all the appointsments-->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Solicitud</th>
+                            <th scope="col">Tipo de cita</th>
+                            <th scope="col">Fecha de la Solicitud</th>
+                            <th scope="col">Mascota</th>
+                            <!-- <th scope="col">Estado</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appointment in appointments %}
+                        <tr>
+                            <td>{{ appointment.date }}</td>
+                            <td>{{ appointment.time }}</td>
+                            <td>{{ appointment.request }}</td>
+                            <td>{{ appointment.type }}</td>
+                            <td>{{ appointment.date_of_request }}</td>
+                            <td>{{ appointment.pet }}</td>
+                            <!-- <td>{{ appointment.status }}</td> -->
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                                <a href="" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                                <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
 
