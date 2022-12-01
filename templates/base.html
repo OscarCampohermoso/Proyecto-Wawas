@@ -10,6 +10,7 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}"/>
 
     <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="{% static 'styles/styles_fer_vf.css' %}">
     <link rel="stylesheet" href="{% static 'styles/styles_andy_title.css' %}">
     <link rel="stylesheet" href="{% static 'styles/styles_facontact.css' %}">
@@ -39,6 +40,10 @@
         html{
             height: 100%;
             margin: 0;
+        }
+
+        #logo{
+            font-size: 28px;
         }
     </style>
 
@@ -115,14 +120,28 @@
         {% endblock content %}
 
     </div>
-
     <footer class="py-3" style="background: #111111;">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item text-light"><a href="{% url 'home' %}" class="nav-link px-2 text-muted">Inicio</a></li>
-            <li class="nav-item text-light"><a href="{% url 'service' %}" class="nav-link px-2 text-muted">Servicios</a></li>
-            <li class="nav-item text-light"><a href="{% url 'news' %}" class="nav-link px-2 text-muted">Noticias</a></li>
-            <li class="nav-item text-light"><a href="{% url 'contact'%}" class="nav-link px-2 text-muted">Contactos</a></li>
-        </ul>
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-4 text-light d-flex justify-content-end text-end" id="logo">
+                    <a href="https://www.facebook.com/wawas.pet.hotel" target="_blank" class="text-light"><i class="fab fa-facebook"></i></a>
+                </div>
+                <div class="col-4 text-light d-flex justify-content-center text-center" id="logo">
+                    <a href="https://www.instagram.com/wawas.pets.hotel/" target="_blank" class="text-light"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="col-4 text-light d-flex justify-content-start text-start" id="logo">
+                    <a href="https://wa.me/76281889?text=Estoy%20interesado%20en%20sacar%20cita"  target="_blank" class="text-light"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
+        <p class="border-top"></p>
+        <br>
         <p class="text-center text-muted">© 2022 Wawas</p>
     </footer>
 </body>

@@ -43,3 +43,14 @@ class Pet(models.Model):
 
     def __str__(self):
         return self.name
+
+class Appointment(models.Model):
+    date = models.DateField(null=True, blank=True)
+    time = models.TimeField(null=True, blank=True)
+    request = models.CharField(max_length=200, blank=True)
+    type = models.CharField(max_length=200, blank=True)
+    date_of_request = models.DateField(auto_now_add=True)
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE, null=True, blank=True)
+    
+    def __str__(self):
+        return self.type

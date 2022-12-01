@@ -5,7 +5,7 @@ from django.forms.utils import ValidationError
 from django.forms import ModelForm
 
 
-from pet_hotel.models import User, Customer, Contact, Admin
+from pet_hotel.models import User, Customer, Contact, Admin, Pet, Appointment
 
 
 class CustomerSignUpForm(UserCreationForm):
@@ -73,4 +73,25 @@ class ContactForm(forms.ModelForm):
             'email': forms.TextInput(attrs={'class':'form-control'}),
             'phone': forms.TextInput(attrs={'class':'form-control'}),
             'message': forms.Textarea(attrs={'class':'form-control'}),
+        }
+
+class AppointmentForm(forms.ModelForm):
+    class Meta:
+        model = Appointment
+        fields = ('date', 'time', 'request', 'type', 'pet')
+        CHOICES =  (('Cuidadores', 'Cuidadores'), ('Peluqueria', 'Peluqueria'), ('Veterinaria', 'Veterinaria'))
+
+        labels = {
+        'date': 'Fecha',
+        'time': 'Hora',
+        'request': 'Solicitud',
+        'type': 'Tipo',
+        'pet': 'Mascota',
+        }
+        widgets = {
+            'date': forms.DateInput(attrs={'class':'form-control'}),
+            'time': forms.TimeInput(attrs={'class':'form-control'}),
+            'request': forms.Textarea(attrs={'class':'form-control'}),
+            'type': forms.Select(attrs={'class':'form-control'}, choices=CHOICES),
+            'pet': forms.Select(attrs={'class':'form-control'}),
         }

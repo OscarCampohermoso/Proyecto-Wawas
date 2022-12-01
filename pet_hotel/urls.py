@@ -14,7 +14,7 @@ urlpatterns = [
         path('deletepets/<int:pk>/', customers.delete_pets, name='delete_pets'),
         path('createpets/', customers.PetCreateView.as_view(), name='create_pets'),
         path('updatepets/<int:pk>/', customers.PetUpdateView.as_view(), name='update_pets'),
-        #path('appointment/', customers.ApointmentCustomerView.as_view(), name='appointment_customers'),
+        path('appointment/<str:type>/', customers.appointment, name='appointment_customers'),
     ], 'pet_hotel'), namespace='customers')),
 
     path('admins/', include(([

@@ -7,10 +7,13 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, UpdateView
+from django.forms import SelectMultiple, Select
+
+
 
 from ..decorators import customer_required
-from ..forms import CustomerSignUpForm
-from ..models import User, Customer, Pet
+from ..forms import CustomerSignUpForm, AppointmentForm
+from ..models import User, Customer, Pet, Appointment
 
 class CustomerSignUpView(CreateView):
     model = User
@@ -66,6 +69,9 @@ class PetCreateView(CreateView):
         form.fields['date_of_birth'].widget.input_type = 'date'
         form.fields['date_of_birth'].label = 'Fecha de nacimiento'
         form.fields['breed'].label = 'Raza'
+        # make a combobox with sizes of pets  medium or large
+        CHOICES = (('Pequeño', 'Pequeño'), ('Mediano', 'Mediano'), ('Grande', 'Grande'))
+        form.fields['size'].widget = Select(choices=CHOICES)
         form.fields['size'].label = 'Tamaño'
         form.fields['description'].label = 'Descripción'
         form.fields['image'].label = 'Imagen'
@@ -93,6 +99,9 @@ class PetUpdateView(UpdateView):
         form.fields['date_of_birth'].widget.input_type = 'date'
         form.fields['date_of_birth'].label = 'Fecha de nacimiento'
         form.fields['breed'].label = 'Raza'
+        # make a combobox with sizes of pets  medium or large
+        CHOICES = (('Pequeño', 'Pequeño'), ('Mediano', 'Mediano'), ('Grande', 'Grande'))
+        form.fields['size'].widget = Select(choices=CHOICES)
         form.fields['size'].label = 'Tamaño'
         form.fields['description'].label = 'Descripción'
         form.fields['image'].label = 'Imagen'
@@ -126,5 +135,33 @@ def service(request):
     return render(request, 'pet_hotel/customers/service_customer.html')
 
 
-# @method_decorator([login_required, customer_required], name='dispatch')
-# class ApointmentCustomerView(CreateView):
+@login_required
+@customer_required
+def appointment(request, type):
+    # get the pets of the customer that is logged in
+    pets = Pet.objects.filter(customer=request.user.customer)
+    # make a combobox with the pets of the customer
+    CHOICES = []
+    for pet in pets:
+        CHOICES.append((pet.id, pet.name))
+    if request.method == 'POST':
+        form = AppointmentForm(request.POST, initial={'type': type})
+        if form.is_valid():
+            appointment = form.save(commit=False)
+            appointment.customer = request.user.customer
+            appointment.pet = Pet.objects.get(id=request.POST['pet'])
+            appointment.save()
+            messages.success(request, 'Cita creada correctamente')
+            return redirect('customers:profile_customers')
+    else:
+        form = AppointmentForm()
+        form.fields['pet'].widget = Select(choices=CHOICES)
+        form.fields['date'].widget.input_type = 'date'
+        form.fields['time'].widget.input_type = 'time'
+    return render(request, 'pet_hotel/customers/appointment_form.html', {'form': form})
+
+    
+
+
+   
+
