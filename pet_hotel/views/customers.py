@@ -134,7 +134,7 @@ def news(request):
 @login_required
 @customer_required
 def service(request):
-    # get all appointments as get context data
+    # get all appointments as get context data only for customer that is logged in  
     appointments = Appointment.objects.filter(customer=request.user.customer)
     return render(request, 'pet_hotel/customers/service_customer.html', {'appointments': appointments})
 
