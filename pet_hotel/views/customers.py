@@ -15,8 +15,8 @@ import datetime
 
 
 from ..decorators import customer_required
-from ..forms import CustomerSignUpForm, AppointmentForm
-from ..models import User, Customer, Pet, Appointment
+from ..forms import CustomerSignUpForm, AppointmentForm, PublicationForm
+from ..models import User, Customer, Pet, Appointment, Publication
 
 class CustomerSignUpView(CreateView):
     model = User
@@ -128,11 +128,7 @@ def delete_pets(request, pk):
     pet.delete()
     messages.success(request, 'Mascota eliminada correctamente')
     return redirect('customers:profile_customers')
-
-@login_required
-@customer_required
-def news(request):
-    return render(request, 'pet_hotel/customers/news_customer.html')
+    
 
 @login_required
 @customer_required

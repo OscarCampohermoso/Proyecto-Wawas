@@ -162,15 +162,13 @@
                         <div class="navbar-nav ms-auto">
                             {% if user.is_authenticated %}
                             {% if user.is_admin %}
-                            <a class="nav-link" href="">Perfil</a>
-                            <a class="nav-link" href="">Servicios</a>
-                            <a class="nav-link" href="">Noticias</a>
-                            <a class="nav-link" href="">Contactos</a>
-                            <a class="nav-link" href="{% url 'signup' %}">Agregar Cuenta</a>
+                            <a class="nav-link" href="{% url 'admins:profile_admins' %}">Usuarios</a>
+                            <a class="nav-link" href="{% url 'admins:service_admins' %}">Servicios</a>
+                            <a class="nav-link" href="{% url 'news' %}">Noticias</a>
                             {% else %}
                             <a class="nav-link" href="{% url 'customers:profile_customers' %}">Perfil</a>
                             <a class="nav-link" href="{% url 'customers:service_customers' %}">Servicios</a>
-                            <a class="nav-link" href="{% url 'customers:news_customers' %}">Noticias</a>
+                            <a class="nav-link" href="{% url 'news' %}">Noticias</a>
                             <a class="nav-link" href="{% url 'contact' %}">Contactos</a>
                             {% endif %}
                             {% else %}

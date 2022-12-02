@@ -5,7 +5,7 @@ from django.forms.utils import ValidationError
 from django.forms import ModelForm
 
 
-from pet_hotel.models import User, Customer, Contact, Admin, Pet, Appointment
+from pet_hotel.models import User, Customer, Contact, Admin, Pet, Appointment, Publication
 
 
 class CustomerSignUpForm(UserCreationForm):
@@ -95,3 +95,20 @@ class AppointmentForm(forms.ModelForm):
             # hide customer field
             'customer': forms.HiddenInput(),
         }
+
+class PublicationForm(forms.ModelForm):
+    class Meta:
+        model = Publication
+        fields = ('title', 'description', 'image')
+        labels = {
+        'title': 'Título',
+        'description': 'Descripción',
+        'image': 'Imagen'
+        }
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'form-control'}),
+            'description': forms.Textarea(attrs={'class':'form-control'}),
+            'image': forms.FileInput(attrs={'class':'form-control'}),
+        }
+
+        

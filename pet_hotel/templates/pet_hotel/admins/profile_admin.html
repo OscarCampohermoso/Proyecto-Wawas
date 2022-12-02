@@ -1,4 +1,87 @@
 {% extends 'base.html' %}
 {% block content %}
-    <!--This is a profile admin-->
+<div class="row mx-2" style="margin-top: 200px; margin-bottom: 200px;">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <div class="alert alert-primary" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <div class="alert alert-warning" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <div class="col-12">
+        <h1 class="bg-light my-2 p-2"> Bienvenido de nuevo <span class="text-primary">{{ user.username }}</span></h1>
+    </div>
+    <div class="col-md-4 col-sm-12  mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h2>Crear cuenta</h2>
+                <p class="lead">Seleccione el tipo de cuenta que desea crear</p>
+                <div class="row">
+                    <div class="col-12 d-grid gap-2">
+                        <a href="{% url 'customer_signup' %}" class="btn btn-primary" role="button">Cliente </a>
+                    </div>
+                    <div class="col-12 d-grid gap-2">
+                        <a href="{% url 'admin_signup' %}" class="btn btn-secondary" role="button">Administrador</a>
+                    </div>
+                    <div class="col-12 d-grid gap-2">
+                        <a href="" class="btn btn-success" role="button">Cuidador</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-sm-12 bg-light table-responsive">
+        <h1 class="my-2">
+            Lista de Clientes y Cuidadores
+        </h1>
+        {% for user in users %}
+        <!-- Present all the data in a table-->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.customer.name }}</td>
+                    <td>{{ user.customer.address }}</td>
+                    <td>{{ user.customer.phone }}</td>
+                    <td>{{ user.customer.email }}</td>
+                    <td>
+                        <a href="{% url 'admins:edit_status' pk=user.id %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock content %}

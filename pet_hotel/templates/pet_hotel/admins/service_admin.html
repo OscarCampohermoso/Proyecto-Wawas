@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mx-2" style="margin-top: 200px; margin-bottom: 200px;">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <div class="alert alert-primary" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <div class="alert alert-warning" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <div class="col-12">
+        <h1 class="bg-light my-2 p-2"> Estas son tus citas pendientes, <span class="text-primary">{{ user.username }}</span></h1>
+    </div>
+    <div class="col-12 bg-light  table-responsive">
+        <!-- Present all the data in a table-->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Solicitud</th>
+                    <th scope="col">Tipo de cita</th>
+                    <th scope="col">Fecha de la Solicitud</th>
+                    <th scope="col">Mascota</th>
+                    <!-- <th scope="col">Estado</th> -->
+                </tr>
+            </thead>
+            <tbody>
+            {% for appointment in appointments %}
+            {% if appointment.status != 'Completado' %}
+                <tr>
+                    {% if appointment.date == None %}
+                    <td>Fecha no especificada</td>
+                    {% else %}
+                    <td>{{ appointment.date }}</td>
+                    {% endif %}
+                    {% if appointment.time == None %}
+                    <td>Hora no especificada</td>
+                    {% else %}
+                    <td>{{ appointment.time }}</td>
+                    {% endif %}
+                    <td>{{ appointment.request }}</td>
+                    <td>{{ appointment.type }}</td>
+                    <td>{{ appointment.date_of_request }}</td>
+                    {% if appointment.pet == None %}
+                    <td>No especificada</td>
+                    {% else %}
+                    <td>{{ appointment.pet }}</td>
+                    {% endif %}
+                    <!-- make a td that depend of the status has different color -->
+                    <td>
+                        {% if appointment.status == 'Pendiente' %}
+                        <span class="badge bg-warning text-dark">{{ appointment.status }}</span>
+                        {% elif appointment.status == 'Aceptada' %}
+                        <span class="badge bg-success text-dark">{{ appointment.status }}</span>
+                        {% elif appointment.status == 'Cancelada' %}
+                        <span class="badge bg-danger text-dark">{{ appointment.status }}</span>
+                        {% endif %}
+                    <td>
+                        <a href="{% url 'admins:appointment_check' pk=appointment.id %}"
+                            class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                        <a href="" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                        <a href=""
+                            class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

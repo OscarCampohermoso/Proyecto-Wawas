@@ -1,4 +1,123 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    hola soy news
+
+{% load static %}
+<!--Create a place to publish publications and a button to create one -->
+<div class="container my-5">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <div class="alert alert-primary" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <div class="alert alert-warning" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-11 h2">
+                            Publicaciones
+                        </div>
+                        <div class="col-1" id="logo">
+                            <a href="{% url 'create_publication' %}"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for publication in publications %}
+                        {% if publication.user.is_admin %}
+                            <div class="col-12 my-3">
+                                <div class="card" style="background: #44cdbd;">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-4 h3 fw-bold text-light">
+                                                Wawas
+                                            </div>
+                                            <div class="col-11 h4 text-light">
+                                                {{ publication.title }}
+                                            </div>
+                                            <!--If publication.user == reuest.user or user is admin -->
+                                            {% if publication.user == request.user or request.user.is_admin %}
+                                            <div class="col-1" id="logo_form">
+                                                <a href="{% url 'update_publication' id=publication.id %}" class="text-light"><i class="fa fa-edit"></i></a>
+                                                <a href="{% url 'delete_publication' id=publication.id %}" class="text-light"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-light">
+                                        {{ publication.description }}</p>
+                                    </div>
+                                    {% if publication.image %}
+                                    <div class="card-footer">
+                                        <img src="{{ publication.image.url }}" alt="" class="img-fluid">
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-12 my-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-4 h3 fw-bold">
+                                                {{ publication.user.username }}
+                                            </div>
+                                            <div class="col-11 h4">
+                                                {{ publication.title }}
+                                            </div>
+                                            <!--If publication.user == reuest.user or user is admin -->
+                                            {% if publication.user == request.user or request.user.is_admin %}
+                                            <div class="col-1" id="logo_form">
+                                                <a href="{% url 'update_publication' id=publication.id %}"><i class="fa fa-edit"></i></a>
+                                                <a href="{% url 'delete_publication' id=publication.id %}"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        {{ publication.description }}</p>
+                                    </div>
+                                    {% if publication.image %}
+                                    <div class="card-footer">
+                                        <img src="{{ publication.image.url }}" alt="" class="img-fluid">
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 {% endblock content %}
