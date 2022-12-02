@@ -63,15 +63,13 @@ class ContactForm(forms.ModelForm):
         fields = '__all__'
 
         labels = {
-        'name': 'Nombre',
+        'name': 'Asunto',
         'email': 'Correo Electrónico',
-        'phone': 'Número de telefono',
         'message': 'Mensaje'
         }
         widgets = {
             'name': forms.TextInput(attrs={'class':'form-control'}),
             'email': forms.TextInput(attrs={'class':'form-control'}),
-            'phone': forms.TextInput(attrs={'class':'form-control'}),
             'message': forms.Textarea(attrs={'class':'form-control'}),
         }
 
