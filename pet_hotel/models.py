@@ -26,7 +26,6 @@ class Admin(models.Model):
 class Contact (models.Model):
     name=models.CharField(max_length=50)
     email=models.EmailField(max_length=254)
-    phone=models.CharField(max_length=8)
     message=models.CharField(max_length=600)
 
     def __str__(self):     
