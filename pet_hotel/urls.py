@@ -19,6 +19,9 @@ urlpatterns = [
         path('appointment/<str:type>/', customers.appointment, name='appointment_customers'),
         path('apointmetcheck/<int:pk>/', customers.AppointmentCheckView.as_view(), name='appointment_check'),
         path('appointmentdelete/<int:pk>/', customers.delete_appointment, name='appointment_delete'),
+        path('createpetwatcher/', customers.PetWatcherCreateView.as_view(), name='petwatcher_create'),
+        path('cuidadoreslist/', customers.customer_is_dog_watcher, name='petwatcher_list'),
+        path('sendmessage/<int:pk>/', customers.send_message, name='send_message'),
     ], 'pet_hotel'), namespace='customers')),
 
     path('admins/', include(([
@@ -26,5 +29,11 @@ urlpatterns = [
         path('edituser/<int:pk>/', admins.edit_status, name='edit_status'),
         path('service/', admins.ServiceListView.as_view(), name='service_admins'),
         path('apointmetcheck/<int:pk>/', admins.AppointmentCheckView.as_view(), name='appointment_check'),
+        path('appointmentchangestatus/<int:pk>/<str:type>/', admins.change_status, name='appointment_change_status'),
+        path('appointmentedit/<int:pk>/', admins.update_appointment, name='appointment_edit'),
+        path('appointmentdelete/<int:pk>/', admins.delete_appointment, name='appointment_delete'),
+        path('petwatchercheck/<int:pk>/', admins.PetWatcherCheckView.as_view(), name='petwatcher_check'),
+        path('petwatcherdelete/<int:pk>/', admins.delete_petwatcher, name='petwatcher_delete'),
+        path('customerisdogwatcher/<int:pk>/', admins.customer_is_dog_watcher, name='customer_is_dog_watcher'),
     ], 'pet_hotel'), namespace='admins')),
 ]

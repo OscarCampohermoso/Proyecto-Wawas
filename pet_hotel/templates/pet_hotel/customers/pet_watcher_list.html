@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mx-2" style="margin-top: 200px; margin-bottom: 200px;">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <div class="alert alert-primary" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <div class="alert alert-warning" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <div class="col-12">
+        <h1 class="bg-light my-2 p-2"> Busca a cuidadores registrados y verificados por <span class="text-primary">Wawas</span> </h1>
+    </div>
+    <div class="col-12 bg-light  table-responsive">
+        <!-- Present all the data in a table-->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Email</th>
+                    <!-- <th scope="col">Estado</th> -->
+                </tr>
+            </thead>
+            <tbody>
+            {% for petwatcher in customers %}
+                <tr>
+                    <td>{{ petwatcher.name }}</td>
+                    <td>{{ petwatcher.phone }}</td>
+                    <td>{{ petwatcher.email }}</td>
+                    <td>
+                        <!--A button to send a email or a message -->
+                        <a href="{% url 'customers:send_message' pk=petwatcher.user_id %}" class="btn btn-primary">Enviar mensaje</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

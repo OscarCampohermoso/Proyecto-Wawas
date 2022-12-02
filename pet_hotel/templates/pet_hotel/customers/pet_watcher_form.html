@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% load static %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col-12 col-md-6 offset-md-3">
+            <!-- a return button -->
+            <a href="{% url 'customers:service_customers' %}" class="btn btn-danger mb-3"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</a>
+            <div class="card card-body">
+                <form method="POST" action="" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <!-- Explain with a card why is important the photo to authenticated -->
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Necesitamos una fotografia de algun documento legal</h5>
+                        </div>
+                        <!--Card Image -->
+                        <img class="card-img-top" src="{% static 'images/profile/Mensaje.png' %}" alt="Card image cap">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

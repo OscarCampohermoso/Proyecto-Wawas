@@ -40,9 +40,9 @@
                 <!--if the user is_admin let the admin have thre buttons in button group -->
                 {% if user.is_admin %}
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="" class="btn btn-primary">Editar</a>
-                    <a href="" class="btn btn-danger">Eliminar</a>
-                    <a href="" class="btn btn-success">Aceptar</a>
+                    <a href="{% url 'admins:appointment_change_status' pk=appointment.id  type='Aceptado' %}" class="btn btn-primary">Aceptar</a>
+                    <a href="{% url 'admins:appointment_change_status' pk=appointment.id  type='Cancelado' %}" class="btn btn-danger">Cancelar</a>
+                    <a href="{% url 'admins:appointment_change_status' pk=appointment.id  type='Completado' %}" class="btn btn-success">Completado</a>
                 {% endif %}
             </div>
         </div>

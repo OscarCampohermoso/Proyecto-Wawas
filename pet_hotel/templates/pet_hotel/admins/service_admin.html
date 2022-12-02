@@ -72,16 +72,16 @@
                     <td>
                         {% if appointment.status == 'Pendiente' %}
                         <span class="badge bg-warning text-dark">{{ appointment.status }}</span>
-                        {% elif appointment.status == 'Aceptada' %}
+                        {% elif appointment.status == 'Aceptado' %}
                         <span class="badge bg-success text-dark">{{ appointment.status }}</span>
-                        {% elif appointment.status == 'Cancelada' %}
+                        {% elif appointment.status == 'Cancelado' %}
                         <span class="badge bg-danger text-dark">{{ appointment.status }}</span>
                         {% endif %}
                     <td>
                         <a href="{% url 'admins:appointment_check' pk=appointment.id %}"
                             class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                        <a href=""
+                        <a href="{% url 'admins:appointment_edit' pk=appointment.id %}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                        <a href="{% url 'admins:appointment_delete' pk=appointment.id %}"
                             class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>

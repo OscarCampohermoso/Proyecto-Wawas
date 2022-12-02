@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row mx-2" style="margin-top: 200px; margin-bottom: 200px;">
+<div class="row mx-2" style="margin-top: 100px; margin-bottom: 200px;">
     {% if messages %}
     {% for message in messages %}
     {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
@@ -53,7 +53,7 @@
     </div>
     <div class="col-md-8 col-sm-12 bg-light table-responsive">
         <h1 class="my-2">
-            Lista de Clientes y Cuidadores
+            Lista de Clientes
         </h1>
         {% for user in users %}
         <!-- Present all the data in a table-->
@@ -76,6 +76,46 @@
                     <td>{{ user.customer.email }}</td>
                     <td>
                         <a href="{% url 'admins:edit_status' pk=user.id %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+    </div>
+
+    <div class="col-12 bg-light table-responsive mt-3">
+        <h1 class="my-2">
+            Lista de Cuidadores
+        </h1>
+        {% for petwatcher in petwatchers %}
+        <!-- Present all the data in a table-->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Motivo</th>
+                    <th scope="col">Cliente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ petwatcher.reason}}</td>
+                    <td>{{ petwatcher.customer.name }}</td>
+                    {% if petwatcher.accepted == False %}
+                    <td>
+                        <span class="badge bg-warning text-dark">Pendiente</span>
+                    </td>
+                    {% endif %}
+                    {% if petwatcher.accepted == True %}
+                    <td>
+                        <span class="badge bg-success text-dark">Aceptado</span>
+                    </td>
+                    {% endif %}
+                    <td>
+                        <!--A group button -->
+                        <div class="btn-group d-flex flex-row bd-highlight" role="group" aria-label="Basic example">
+                            <a href="{% url 'admins:petwatcher_delete' pk=petwatcher.id %}" class="btn btn-danger">Eliminar</a>
+                            <a href="{% url 'admins:petwatcher_check' pk=petwatcher.id %}" class="btn btn-success">Verificar</a>
+                        </div>
                     </td>
                 </tr>
             </tbody>

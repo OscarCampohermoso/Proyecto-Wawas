@@ -13,6 +13,7 @@ class Customer(models.Model):
     phone = models.CharField(max_length=200, blank=True)
     email = models.CharField(max_length=200, blank=True)
     profile_image = models.ImageField(upload_to='profile_images', blank=True, null=True)
+    is_dog_watcher = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -65,5 +66,15 @@ class Publication(models.Model):
 
     def __str__(self):
         return self.title
+
+class PetWatcher(models.Model):
+    reason = models.CharField(max_length=200, blank=True, null=False)
+    accept = models.BooleanField(blank=True, null=False)
+    photo = models.ImageField(upload_to='pet_watcher_images', blank=True, null=False)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=False, blank=True)
+    accepted = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.reason
 
 

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container"  style="margin-top: 200px; margin-bottom: 200px;">
+    <div class="row my-5">
+        <div class="col-12 col-md-6 offset-md-3">
+            <!-- a return button -->
+            <a href="{% url 'admins:profile_admins' %}" class="btn btn-danger mb-3"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</a>
+            <div class="card card-body">
+                <!--Show the DetailView of the apointmen-->
+                <h3>Solicitud</h3>
+                <p>Motivo: {{ petwatcher.reason }}</p>
+                <p>Cliente: {{ petwatcher.customer.name }}</p>
+                <p>Foto de verificación: 
+                    <br>
+                    <img src="{{ petwatcher.photo.url }}" alt="photo" width="100%"></p>
+                <!--group button with two buttons to accept or reject the appointment-->
+                <div class="btn-group">
+                    <a href="{% url 'admins:customer_is_dog_watcher' pk=petwatcher.id %}" class="btn btn-success">Aceptar</a>
+                    <a href="{% url 'admins:petwatcher_delete' pk=petwatcher.id %}" class="btn btn-danger">Rechazar</a>
+                </div>
+            <div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

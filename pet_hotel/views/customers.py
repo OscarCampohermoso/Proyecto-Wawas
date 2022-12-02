@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, UpdateView, ListView, DetailView
 from django.forms import SelectMultiple, Select
+from django.core.mail import send_mail
 # import datetime.date.today library
 import datetime
 
@@ -16,7 +17,7 @@ import datetime
 
 from ..decorators import customer_required
 from ..forms import CustomerSignUpForm, AppointmentForm, PublicationForm
-from ..models import User, Customer, Pet, Appointment, Publication
+from ..models import User, Customer, Pet, Appointment, Publication, PetWatcher
 
 class CustomerSignUpView(CreateView):
     model = User
@@ -189,5 +190,69 @@ def delete_appointment(request, pk):
     appointment.save()
     messages.success(request, 'Cita cancelada correctamente')
     return redirect('customers:service_customers')
+
+@method_decorator([login_required, customer_required], name='dispatch')
+class PetWatcherCreateView(CreateView):
+    model = PetWatcher
+    fields = ['accept','reason', 'photo']
+    template_name = 'pet_hotel/customers/pet_watcher_form.html'
+    success_url = reverse_lazy('customers:service_customers')
+
+    def get_form(self, form_class=None):
+        form = super(PetWatcherCreateView, self).get_form()
+        form.fields['accept'].label = 'He leído y acepto los términos y condiciones de uso'
+        form.fields['reason'].label = 'Motivo por el que desea ser un cuidador'
+        form.fields['photo'].label = 'Foto de identificación'
+        # all the fields are required
+        form.fields['accept'].required = True
+        form.fields['reason'].required = True
+        form.fields['photo'].required = True
+        return form
+
+    
+    def form_valid(self, form):
+        pet_watcher = form.save(commit=False)
+        pet_watcher.customer = self.request.user.customer
+        pet_watcher.save()
+        messages.success(self.request, 'Pet watcher creado correctamente')
+        return redirect('customers:service_customers')
+
+    def __str__(self):
+        return self.accept
+
+@login_required
+@customer_required
+def customer_is_dog_watcher(request):
+    # get all customers that is_dog_watcher = True
+    customers = Customer.objects.filter(is_dog_watcher=True)
+    return render(request, 'pet_hotel/customers/pet_watcher_list.html', {'customers': customers})
+
+
+@login_required
+@customer_required
+def send_message(request, pk):
+    # get the customer that is logged in
+    customer = Customer.objects.get(user=request.user)
+    # get the customer that is going to receive the message
+    customer_to = Customer.objects.get(user_id=pk)
+    # get the booth gmail account and send email to the customer that is going to receive the message
+    email_customer = customer.email
+    email_customer_to = customer_to.email
+    message = "Hola te hablamos de Wawas para avisarte que un cliente necesita de tus servicios, por favor contactalo a la brevedad posible. Gracias"
+    message += " el email del cliente es: " + email_customer
+    asunto = "Wawas - Pet Hotel - Un cliente te necesita de tus servicios"
+    send_mail(
+            asunto, #asunto 
+            message, #message
+            'settings.EMAIL_HOST_USER',
+            [email_customer_to],
+            fail_silently=False,
+        )
+    messages.success(request, 'Mensaje enviado correctamente')
+    return redirect('customers:petwatcher_list')
+
+    
+
+
 
 

@@ -36,7 +36,7 @@ def contact(request):
     data = {
         'contact_form':ContactForm()
     }
-     # if user is logged in put the user email in the email field
+    # if user is logged in put the user email in the email field
     if request.user.is_authenticated:
         data['contact_form'].fields['email'].initial = request.user.email
 
