@@ -6,8 +6,11 @@ from django.db.models import Count
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView, DetailView
 from django.forms import SelectMultiple, Select
+# import datetime.date.today library
+import datetime
+
 
 
 
@@ -134,9 +137,17 @@ def news(request):
 @login_required
 @customer_required
 def service(request):
-    # get all appointments as get context data only for customer that is logged in  
+    # get all appointments as get context data only for customer that is logged in 
+    # check all the appointments and compare with the current date and if the appointment.date_of_request == current date + a count
+    # then pass count to the template 
     appointments = Appointment.objects.filter(customer=request.user.customer)
-    return render(request, 'pet_hotel/customers/service_customer.html', {'appointments': appointments})
+    count = 0
+    for appointment in appointments:
+        if appointment.date_of_request == datetime.date.today():
+            count += 1
+    if count > 3:
+        messages.warning(request, 'Alcanzaste el límite de citas para hoy')
+    return render(request, 'pet_hotel/customers/service_customer.html', {'appointments': appointments, 'count': count})
 
 
 @login_required
@@ -155,7 +166,8 @@ def appointment(request, type):
         if form.is_valid():
             appointment = form.save(commit=False)
             appointment.customer = request.user.customer
-            appointment.pet = Pet.objects.get(id=request.POST['pet'])
+            if pets:
+                appointment.pet = Pet.objects.get(id=request.POST['pet'])
             appointment.save()
             messages.success(request, 'Cita creada correctamente')
             return redirect('customers:service_customers')
@@ -167,7 +179,19 @@ def appointment(request, type):
     return render(request, 'pet_hotel/customers/appointment_form.html', {'form': form})
 
     
+@method_decorator([login_required, customer_required], name='dispatch')
+class AppointmentCheckView(DetailView):
+    model = Appointment
+    template_name = 'pet_hotel/customers/appointment_check.html'
 
+@login_required
+@customer_required
+def delete_appointment(request, pk):
+    # change the status of the appointment to cancelled
+    appointment = Appointment.objects.get(id=pk)
+    appointment.status = 'Cancelada'
+    appointment.save()
+    messages.success(request, 'Cita cancelada correctamente')
+    return redirect('customers:service_customers')
 
-   
 

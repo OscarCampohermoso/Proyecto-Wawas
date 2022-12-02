@@ -11,6 +11,7 @@
           </div>
         {% endfor %}
         {% endif %}
+        <!--check all the appointments and compare with the current date and if the appointment.date_of_request == current date + a count -->
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3">
             <div class="col">
                 <div class="card shadow-sm">
@@ -18,7 +19,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Cuidadores</h5>
                         <div class="d-flex justify-content-between align-items-center mt-3">
-                            <a href="{% url 'customers:appointment_customers' type='Cuidadores' %}" class="btn btn-sm btn-outline-secondary">Sacar Cita</a>
+                            <!--If count > 2 show a message saying that the use only can reserved two appointment for day -->
+                            {% if count > 3 %}
+                            <a href="{% url 'customers:service_customers' %}" class="btn btn-sm btn-outline-secondary">Sacar Cita</a>
+                            {% else %}
+                            <a href="{% url 'customers:appointment_customers' type='Veterinaria' %}" class="btn btn-sm btn-outline-secondary">Sacar Cita</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -29,7 +35,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Peluqueria</h5>
                         <div class="d-flex justify-content-between align-items-center mt-3">
-                            <a href="{% url 'customers:appointment_customers' type='Peluqueria' %}" class="btn btn-sm btn-outline-secondary">Sacar Cita</a>
+                            <!--If count > 2 show a message saying that the use only can reserved two appointment for day -->
+                            {% if count > 3 %}
+                            <a href="{% url 'customers:service_customers' %}" class="btn btn-sm btn-outline-secondary">Sacar Cita</a>
+                            {% else %}
+                            <a href="{% url 'customers:appointment_customers' type='Veterinaria' %}" class="btn btn-sm btn-outline-secondary">Sacar Cita</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -41,7 +52,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Veterinaria</h5>
                         <div class="d-flex justify-content-between align-items-center mt-3">
+                            <!--If count > 2 show a message saying that the use only can reserved two appointment for day -->
+                            {% if count > 3 %}
+                            <a href="{% url 'customers:service_customers' %}" class="btn btn-sm btn-outline-secondary">Sacar Cita</a>
+                            {% else %}
                             <a href="{% url 'customers:appointment_customers' type='Veterinaria' %}" class="btn btn-sm btn-outline-secondary">Sacar Cita</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -80,20 +96,42 @@
                     </thead>
                     <tbody>
                         {% for appointment in appointments %}
+                        {% if appointment.status != 'Cancelada' %}
                         <tr>
+                            {% if appointment.date == None %}
+                            <td>Fecha no especificada</td>
+                            {% else %}
                             <td>{{ appointment.date }}</td>
+                            {% endif %}
+                            {% if appointment.time == None %}
+                            <td>Hora no especificada</td>
+                            {% else %}
                             <td>{{ appointment.time }}</td>
+                            {% endif %}
                             <td>{{ appointment.request }}</td>
                             <td>{{ appointment.type }}</td>
                             <td>{{ appointment.date_of_request }}</td>
+                            {% if appointment.pet == None %}
+                            <td>No especificada</td>
+                            {% else %}
                             <td>{{ appointment.pet }}</td>
-                            <!-- <td>{{ appointment.status }}</td> -->
+                            {% endif %}
+                            <!-- make a td that depend of the status has different color -->
                             <td>
-                                <a href="" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                                <a href="" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                                <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                {% if appointment.status == 'Pendiente' %}
+                                <span class="badge bg-warning text-dark">{{ appointment.status }}</span>
+                                {% elif appointment.status == 'Aceptada' %}
+                                <span class="badge bg-success text-dark">{{ appointment.status }}</span>
+                                {% elif appointment.status == 'Cancelada' %}
+                                <span class="badge bg-danger text-dark">{{ appointment.status }}</span>
+                                {% endif %}
+                            <td>
+                                <a href="{% url 'customers:appointment_check' pk=appointment.id %}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                                <!-- <a href="" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a> -->
+                                <a href="{% url 'customers:appointment_delete' pk=appointment.id %}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
+                        {% endif %}
                         {% endfor %}
                     </tbody>
                 </table>

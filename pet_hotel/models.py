@@ -52,6 +52,7 @@ class Appointment(models.Model):
     date_of_request = models.DateField(auto_now_add=True)
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE, null=True, blank=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=False, blank=True)
+    status = models.CharField(max_length=200, blank=True, default='Pendiente')
 
     def __str__(self):
         return self.type
