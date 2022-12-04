@@ -186,7 +186,7 @@ class AppointmentCheckView(DetailView):
 def delete_appointment(request, pk):
     # change the status of the appointment to cancelled
     appointment = Appointment.objects.get(id=pk)
-    appointment.status = 'Cancelada'
+    appointment.status = 'Cancelado'
     appointment.save()
     messages.success(request, 'Cita cancelada correctamente')
     return redirect('customers:service_customers')
