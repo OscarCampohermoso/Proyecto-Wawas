@@ -1,5 +1,5 @@
 
-# Bienvenido al repositorio del Proyecto-Wawas :D
+# Bienvenido al repositorio del Proyecto-Wawas
 
 ![readme1](https://user-images.githubusercontent.com/104600297/206316683-9024e325-e342-4d64-bd8a-2a2e4b56ef23.png)
 
@@ -159,14 +159,14 @@ Para controlar el flujo de citas y evitar el aglomeramiento de usuarios malicios
 
 - Gutiérrez Sandoval María Fernanda 
   - maria.gutierrez.s@ucb.edu.bo
-  - 71544312
+  - +591 71544312
 
 - Martínez Acarapi Fabiola Alejandra 
   - fabiola.martinez@ucb.edu.bo
-  - 60699379
+  - +591 60699379
 
 - Quiroga Perez Andrea 
   - andrea.quiroga@ucb.edu.bo
-  - 67096298
+  - +591 67096298
 
 ---
