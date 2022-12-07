@@ -126,6 +126,8 @@ La aplicación Web se desarrolló en [Django](https://www.djangoproject.com/), u
 
 Y para el frontend, además, se utilizo [Bootstrap](https://getbootstrap.com/), que es una biblioteca multiplataforma o conjunto de herramientas de código abierto para diseño de sitios y aplicaciones web.
 
+---
+
 ## Colaboracion deseada
 Estamos abiertos a recibir sugerencias que ayuden a la mejora del sistema.
 
