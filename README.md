@@ -1,7 +1,8 @@
 
 # Bienvenido al repositorio del Proyecto-Wawas :D
 
-![Banner Wawas](https://raw.githubusercontent.com/OscarCampohermoso/Proyecto-Wawas/static/images/readme/readme1.png)
+![readme1](https://user-images.githubusercontent.com/104600297/206316683-9024e325-e342-4d64-bd8a-2a2e4b56ef23.png)
+
 
 ## Contenido <!-- omit in toc -->
 
@@ -54,7 +55,7 @@ El sistema de Información tendrá la siguiente funcionalidad:
 
 - Permitir a los administradores gestionar la sección de noticias.
 
-![Modelo BPMN del proceso de la sección de noticias del sistema](https://raw.githubusercontent.com/OscarCampohermoso/Proyecto-Wawas/static/images/readme/readme2.png)
+![readme2](https://user-images.githubusercontent.com/104600297/206316908-1a143435-a5f0-4381-b05c-19ec0c9e3aa3.jpg)
 
 **Figura 1:** Modelo BPMN del proceso de la sección de noticias del sistema.
 
@@ -66,7 +67,7 @@ El sistema de Información tendrá la siguiente funcionalidad:
 
 - Permitir a los usuarios sacar citas de los diferentes servicios que ofrece la empresa.
 
-![Caso de uso sobre como sacar una cita en el sistema](https://raw.githubusercontent.com/OscarCampohermoso/Proyecto-Wawas/static/images/readme/readme3.png)
+![readme3](https://user-images.githubusercontent.com/104600297/206316986-d4aa464c-5480-4b6e-9d23-0225133ce578.jpg)
 
 **Figura 2:** Caso de uso sobre como sacar una cita en el sistema
 
@@ -76,7 +77,7 @@ El sistema de Información tendrá la siguiente funcionalidad:
 
 El proyecto actualmente se encunetra finalizado (08/11/2022). Pero esta abierto a sugerencias y modificaciones que generen cambios positivos hacia el proyecto.
 
-![Sección servicios funcional](https://raw.githubusercontent.com/OscarCampohermoso/Proyecto-Wawas/static/images/readme/readme4.png)
+![readme4](https://user-images.githubusercontent.com/104600297/206317143-1a780f2d-bcbc-479e-998e-d02c7aad3b0b.jpg)
 
 **Figura 3:** Sección servicios funcional, listo para sacar una cita.
 
@@ -87,6 +88,7 @@ El proyecto actualmente se encunetra finalizado (08/11/2022). Pero esta abierto 
 Debe tener instalado un editor de código fuente, como por ejemplo, Visual Studio Code [Visual Studio Code](https://code.visualstudio.com/) y el software de [Git](https://git-scm.com/downloads). Luego debe abrir un archivo en el editor de código
 
 Copie la direccion del respositorio para clonarlo, utilice el comando *git clone*. 
+![readme5](https://user-images.githubusercontent.com/104600297/206317480-61669189-9ca6-4ab0-8a53-73b935682456.jpg)
 
 ```yaml
 git clone https://github.com/OscarCampohermoso/Proyecto-Wawas.git
