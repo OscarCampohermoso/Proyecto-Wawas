@@ -70,6 +70,8 @@ El sistema de Información tendrá la siguiente funcionalidad:
 
 **Figura 2:** Caso de uso sobre como sacar una cita en el sistema
 
+---
+
 ## Estado del proyecto
 
 El proyecto actualmente se encunetra finalizado (08/11/2022). Pero esta abierto a sugerencias y modificaciones que generen cambios positivos hacia el proyecto.
@@ -77,6 +79,8 @@ El proyecto actualmente se encunetra finalizado (08/11/2022). Pero esta abierto 
 ![Sección servicios funcional](https://raw.githubusercontent.com/OscarCampohermoso/Proyecto-Wawas/static/images/readme/readme4.png)
 
 **Figura 3:** Sección servicios funcional, listo para sacar una cita.
+
+---
 
 ## Instalación
 
@@ -112,6 +116,8 @@ Prueba el siguiente comando para visualizarlo en la red.
 python manage.py runserver
 ```
 
+---
+
 ## Tecnologías utilizadas
 
 Se desarrolló el backend del Sistema de Información basado en el modelo MVT (Modelo Vista Template) pero sigue muy de cerca el patrón de diseño MVC (Modelo Vista Controlador).
@@ -129,12 +135,16 @@ Sugerencias aún no implementadas:
 
 - Otra sugerencia nos hablaba de implementar un videochat entre los cuidadores y los clientes quienes son dueños de la mascota, y que este habilitado las 24 hrs.
 
+---
+
 ## Preguntas frecuentes
 
 > ¿Existe un limite de citas que se puede sacar en un día?
 
 **Respuesta:**
 Para controlar el flujo de citas y evitar el aglomeramiento de usuarios maliciosos. El sistema cuenta con un control sobre las citas por día. Es decir, un usuario solo puede sacar **3 citas por día.**
+
+---
 
 ## Contactos
 #### Ante cualquier duda, contactanos :D
