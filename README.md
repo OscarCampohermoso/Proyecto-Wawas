@@ -112,7 +112,7 @@ pip install -r requirements.txt
 ```
 Realice las migraciones necesarias, si se lo pide el programa.
 ```yaml
-python manage.py makemigrations
+python manage.py makemigrations pet_hotel
 python manage.py migrate 
 ```
 Y listo, ya puede contribuir al desarrollo de mejoras para el sistema.
@@ -157,8 +157,8 @@ Para controlar el flujo de citas y evitar el aglomeramiento de usuarios malicios
 #### Ante cualquier duda, contactanos :D
 
 - Campohermoso Berdeja Oscar (Líder del proyecto)
-  - +591 76281889
   - oscar.campohermoso@ucb.edu.bo
+  - +591 76281889
 
 - Gutiérrez Sandoval María Fernanda 
   - maria.gutierrez.s@ucb.edu.bo
