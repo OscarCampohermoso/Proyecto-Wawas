@@ -67,9 +67,9 @@ El sistema de Información tendrá la siguiente funcionalidad:
 
 - Permitir a los usuarios sacar citas de los diferentes servicios que ofrece la empresa.
 
-![readme3](https://user-images.githubusercontent.com/104600297/206316986-d4aa464c-5480-4b6e-9d23-0225133ce578.jpg)
+Además el proyecto cuenta con el siguiente modelo de la Base de Datos:
 
-**Figura 2:** Caso de uso sobre como sacar una cita en el sistema
+![WAWAS-2022-12-07_19-19](https://user-images.githubusercontent.com/104600297/206318426-9d57e31e-294b-43b4-b307-7515959c4297.png)
 
 ---
 
@@ -79,7 +79,7 @@ El proyecto actualmente se encunetra finalizado (08/11/2022). Pero esta abierto 
 
 ![readme4](https://user-images.githubusercontent.com/104600297/206317143-1a780f2d-bcbc-479e-998e-d02c7aad3b0b.jpg)
 
-**Figura 3:** Sección servicios funcional, listo para sacar una cita.
+**Figura 2:** Sección servicios funcional, listo para sacar una cita.
 
 ---
 
