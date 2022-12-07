@@ -7,21 +7,21 @@
 
 En el directorio `/contenido` encontrará un listado de las partes del README para facilitar su comprensión.
 
-- [Acerca del proyecto](#Acerca del proyecto)
+- [Acerca del proyecto](#Acerca-del-proyecto)
 
   - [Introducción](#Introducción)
-  - [Objetivo del proyecto](#Objetivo del proyecto)
-  - [Descripción del proyecto](#Descripción del proyecto)
+  - [Objetivo del proyecto](#Objetivo-del-proyecto)
+  - [Descripción del proyecto](#Descripción-del-proyecto)
 
-- [Estado del proyecto](#Estado del proyecto)
+- [Estado del proyecto](#Estado-del-proyecto)
 
 - [Instalación](#Instalación)
 
-- [Tecnologías utilizadas](#Tecnologías utilizadas)
+- [Tecnologías utilizadas](#Tecnologías-utilizadas)
 
-- [Colaboracion deseada](#Colaboracion deseada)
+- [Colaboracion deseada](#Colaboracion-deseada)
 
-- [Preguntas frecuentes](#Preguntas frecuentes)
+- [Preguntas frecuentes](#Preguntas-frecuentes)
 
 - [Contactos](#Contactos)
 
@@ -56,7 +56,7 @@ El sistema de Información tendrá la siguiente funcionalidad:
 
 ![Modelo BPMN del proceso de la sección de noticias del sistema](https://raw.githubusercontent.com/OscarCampohermoso/Proyecto-Wawas/static/images/readme/readme2.png)
 
-**Figura 1: **Modelo BPMN del proceso de la sección de noticias del sistema.
+**Figura 1:** Modelo BPMN del proceso de la sección de noticias del sistema.
 
 - Permitir a los usuarios comunicarse con la empresa, por medio de un formulario de contactos, para poder dejar sus comentarios, recomendaciones o dudas.
 
@@ -68,7 +68,7 @@ El sistema de Información tendrá la siguiente funcionalidad:
 
 ![Caso de uso sobre como sacar una cita en el sistema](https://raw.githubusercontent.com/OscarCampohermoso/Proyecto-Wawas/static/images/readme/readme3.png)
 
-**Figura 2: **Caso de uso sobre como sacar una cita en el sistema
+**Figura 2:** Caso de uso sobre como sacar una cita en el sistema
 
 ## Estado del proyecto
 
@@ -76,7 +76,7 @@ El proyecto actualmente se encunetra finalizado (08/11/2022). Pero esta abierto 
 
 ![Sección servicios funcional](https://raw.githubusercontent.com/OscarCampohermoso/Proyecto-Wawas/static/images/readme/readme4.png)
 
-**Figura 3: **Sección servicios funcional, listo para sacar una cita.
+**Figura 3:** Sección servicios funcional, listo para sacar una cita.
 
 ## Instalación
 
@@ -139,20 +139,20 @@ Para controlar el flujo de citas y evitar el aglomeramiento de usuarios malicios
 ## Contactos
 #### Ante cualquier duda, contactanos :D
 
-• Campohermoso Berdeja Oscar (Líder del proyecto)
- +591 76281889
- oscar.campohermoso@ucb.edu.bo
+- Campohermoso Berdeja Oscar (Líder del proyecto)
+  - +591 76281889
+  - oscar.campohermoso@ucb.edu.bo
 
-• Gutiérrez Sandoval María Fernanda 
- maria.gutierrez.s@ucb.edu.bo
- 71544312
+- Gutiérrez Sandoval María Fernanda 
+  - maria.gutierrez.s@ucb.edu.bo
+  - 71544312
 
-• Martínez Acarapi Fabiola Alejandra 
- fabiola.martinez@ucb.edu.bo
- 60699379
+- Martínez Acarapi Fabiola Alejandra 
+  - fabiola.martinez@ucb.edu.bo
+  - 60699379
 
-• Quiroga Perez Andrea 
- andrea.quiroga@ucb.edu.bo
- 67096298
+- Quiroga Perez Andrea 
+  - andrea.quiroga@ucb.edu.bo
+  - 67096298
 
 ---
