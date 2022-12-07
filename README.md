@@ -1,7 +1,7 @@
 
 # Proyecto-Wawas
-![made-with-python](https://user-images.githubusercontent.com/104600219/206321166-9067db73-86b7-45a3-bcd4-fb3c4fd61b5c.svg)
-![Django-092E20](https://user-images.githubusercontent.com/104600219/206321177-bc6cf37b-40b6-41bb-a3db-2d03ee47c238.svg)
+[![Python Version](https://img.shields.io/badge/python-3.10-brightgreen.svg)](https://python.org)
+[![Django Version](https://img.shields.io/badge/django-4.10-brightgreen.svg)](https://djangoproject.com)
 
 
 ![readme1](https://user-images.githubusercontent.com/104600297/206316683-9024e325-e342-4d64-bd8a-2a2e4b56ef23.png)
