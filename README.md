@@ -154,22 +154,18 @@ Para controlar el flujo de citas y evitar el aglomeramiento de usuarios malicios
 ---
 
 ## Contactos
-#### Ante cualquier duda, contactanos :D
+#### Ante cualquier duda, contactanos
 
 - Campohermoso Berdeja Oscar (Líder del proyecto)
   - oscar.campohermoso@ucb.edu.bo
-  - +591 76281889
 
 - Gutiérrez Sandoval María Fernanda 
   - maria.gutierrez.s@ucb.edu.bo
-  - +591 71544312
 
 - Martínez Acarapi Fabiola Alejandra 
   - fabiola.martinez@ucb.edu.bo
-  - +591 60699379
 
 - Quiroga Perez Andrea 
   - andrea.quiroga@ucb.edu.bo
-  - +591 67096298
 
 ---
