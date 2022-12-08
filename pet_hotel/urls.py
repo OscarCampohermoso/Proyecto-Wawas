@@ -6,7 +6,7 @@ urlpatterns = [
     path('service/', pet_hotel.service, name='service'),
     path('contact/', pet_hotel.contact, name='contact'),
     path('news/', pet_hotel.news, name='news'),
-    path('createpublication/', pet_hotel.create_publication , name='create_publication'),
+    path('createpublication/', pet_hotel.CreatePublicationView.as_view() , name='create_publication'),
     path('updatepublication/<int:id>/', pet_hotel.update_publication , name='update_publication'),
     path('deletepublication/<int:id>/', pet_hotel.delete_publication , name='delete_publication'),
 
@@ -21,7 +21,7 @@ urlpatterns = [
         path('appointmentdelete/<int:pk>/', customers.delete_appointment, name='appointment_delete'),
         path('createpetwatcher/', customers.PetWatcherCreateView.as_view(), name='petwatcher_create'),
         path('cuidadoreslist/', customers.customer_is_dog_watcher, name='petwatcher_list'),
-       # path('sendmessage/<int:pk>/', customers.send_message, name='send_message'),
+        # path('sendmessage/<int:pk>/', customers.send_message, name='send_message'),
         path('inbox/', customers.ListThreads.as_view(), name='inbox'),
         path('inbox/create-thread/<int:pk>/', customers.CreateThread.as_view(), name='create-thread'),
         path('inbox/<int:pk>/', customers.ThreadView.as_view(), name='thread'),

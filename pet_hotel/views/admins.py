@@ -106,6 +106,8 @@ def update_appointment(request, pk):
             form.save()
             return redirect('admins:service_admins')
     context = {'form': form}
+    form.fields['date'].widget.input_type = 'date'
+    form.fields['time'].widget.input_type = 'time'
     return render(request, 'pet_hotel/admins/appointment_form.html', context)
 
 

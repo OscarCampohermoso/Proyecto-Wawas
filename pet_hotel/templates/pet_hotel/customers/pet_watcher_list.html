@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<a href="{% url 'customers:service_customers' %}" class="btn btn-outline-info"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</a>
 
 <div class="row mx-2" style="margin-top: 50px; margin-bottom: 200px;">
     
@@ -33,8 +32,9 @@
     {% endif %}
     {% endfor %}
     {% endif %}
- 
+
     <div class="col-12">
+        <a href="{% url 'customers:service_customers' %}" class="btn btn-outline-info"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</a>
         <h1 class="bg-light my-2 p-2"> Busca a cuidadores registrados y verificados por <span class="text-primary">Wawas</span> </h1>
     </div>
     <div class="col-12 bg-light  table-responsive">
@@ -50,14 +50,13 @@
             </thead>
             <tbody>
             {% for petwatcher in customers %}
-              
-             
+
                 <tr>
                     <td>{{ petwatcher.name }}</td>
                     <td>{{ petwatcher.phone }}</td>
                     <td>{{ petwatcher.email }}</td>
                     <td>
-                       
+
                             <form method="GET" action="{% url 'customers:create-thread' pk=petwatcher.user_id %}">
                                 <button class="btn btn-primary" type="submit">Enviar mensaje</a></button>
                             </form>

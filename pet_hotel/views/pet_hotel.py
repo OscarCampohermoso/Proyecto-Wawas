@@ -5,10 +5,12 @@ from pet_hotel.forms import ContactForm
 from pet_hotel.models import Contact, Publication
 from django.core.mail import send_mail
 from django.conf import settings
+from django.utils.decorators import method_decorator
 from ..forms import CustomerSignUpForm, AppointmentForm, PublicationForm
-
+from django.views.generic import CreateView, UpdateView, ListView, DetailView
 from ..models import User, Customer, Pet, Appointment, Publication
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 
 
 
@@ -61,33 +63,37 @@ def news(request):
     publications = publications.order_by('-date_of_creation')
     return render(request, 'pet_hotel/news.html', {'publications': publications})
 
-@login_required
-def create_publication(request):
-    if request.method == 'POST':
-        form = PublicationForm(request.POST)
-        if form.is_valid():
-            publication = form.save(commit=False)
-            # image
-            publication.image = request.FILES['image']
-            publication.user = request.user
-            publication.save()
-            messages.success(request, 'Publicación creada correctamente')
-            return redirect('news')
-    else:
-        form = PublicationForm()
-    return render(request, 'pet_hotel/customers/publication_form.html', {'form': form})
+@method_decorator(login_required, name='dispatch')
+class CreatePublicationView(CreateView):
+    model = Publication
+    form_class = PublicationForm
+    template_name = 'pet_hotel/customers/publication_form.html'
+    success_url = reverse_lazy('news')
+
+    def form_valid(self, form):
+        publication = form.save(commit=False)
+        publication.user = self.request.user
+        publication.save()
+        messages.success(self.request, 'Publicación creada correctamente')
+        return super().form_valid(form)
+
 
 @login_required
 def update_publication(request, id):
     publication = Publication.objects.get(id=id)
-    if request.method == 'GET':
-        form = PublicationForm(instance=publication)
-    else:
-        form = PublicationForm(request.POST, instance=publication)
+    data = {
+        'form': PublicationForm(instance=publication)
+    }
+
+    if request.method == 'POST':
+        form = PublicationForm(data=request.POST, instance=publication, files=request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('news')
-    return render(request, 'pet_hotel/customers/publication_form.html', {'form':form})
+            messages.success(request, 'Publicación actualizada correctamente')
+            return redirect('news')
+        data['form'] = form
+    return render(request, 'pet_hotel/customers/publication_form.html', data)
+
 
 @login_required
 def delete_publication(request, id):

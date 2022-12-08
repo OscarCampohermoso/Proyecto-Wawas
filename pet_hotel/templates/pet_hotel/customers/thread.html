@@ -60,7 +60,7 @@
 	{% endfor %}
 
 	<div class="row">
-		<div class="card col-md-12 p-3 shadow-sm">
+		<div class="card col-md-12 p-3 shadow-sm mb-5">
 			<form method="POST" action="{% url 'customers:create-message' thread.pk %}" enctype="multipart/form-data">
 				{% csrf_token %}
 				{{ form | crispy }}

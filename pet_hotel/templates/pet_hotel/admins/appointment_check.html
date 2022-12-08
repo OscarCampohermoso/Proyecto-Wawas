@@ -14,9 +14,21 @@
             <div class="card card-body">
                 <!--Show the DetailView of the apointmen-->
                 <h3>Reserva</h3>
+                {% if appointment.date == None %}
+                    <p>Fecha: No hay fecha especificada</p>
+                {% else %}
                 <p>Fecha: {{ appointment.date }}</p>
+                {% endif %}
+                {% if appointment.time == None %}
+                    <p>Hora: No hay hora especificada</p>
+                {% else %}
                 <p>Hora: {{ appointment.time }}</p>
-                <p>Nombre de la mascota: {{ appointment.pet }}</p>
+                {% endif %}
+                {% if appointment.pet == None %}
+                    <p>Nombre de la mascota: No hay mascota especificada</p>
+                {% else %}
+                    <p>Nombre de la mascota: {{ appointment.pet }}</p>
+                {% endif %}
                 <p>Nombre del servicio: {{ appointment.type }}</p>
                 <!--Show Status in card if the STATUS is Pendiente the box will be yello and if the STATUS is Aceptado the box will be green-->
                 <div class="card">

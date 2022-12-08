@@ -101,6 +101,7 @@
 
         <div class="row mt-5">
             <div class="col-md-12 col-lg-12 col-sm-12">
+                {% if user.customer.is_dog_watcher == False %}
                 <div class="card text-center">
                     <div class="card-header">
                         Encuentra un cuidador perfecto para ti y tu mascota
@@ -112,22 +113,32 @@
                         <p class="card-text">Una alternativa a los servicios que proporcionamos.</p>
                         <!--Two a as a button in a button group -->
                         <!--if user.customer.is_dog_watcher == false -->
-                        {% if user.customer.is_dog_watcher == False %}
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a href="{% url 'customers:petwatcher_create' %}"
                                 class="btn btn-outline-info">Quiero ser Cuidador</a>
                             <a href="{% url 'customers:petwatcher_list' %}"
                                 class="btn btn-outline-info">Busco Cuidadores</a>
                         </div>
-                        {% else %}
+                    </div>
+                </div>
+                {% else %}
+                <div class="card text-center text-white bg-primary">
+                    <div class="card-header">
+                        Felicidades ya eres parte de nuestros cuidadores
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Espera a que te contacten para solicitar tus servicios</h5>
+                        <p class="card-text">Ahora puedes hablar con aquellas personas que te buscan.</p>
+                        <!--Two a as a button in a button group -->
+                        <!--if user.customer.is_dog_watcher == false -->
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <!-- crear un chat de usuarios a cuidadores-->
                             <a href="{% url 'customers:inbox' %}" 
-                                class="btn btn-outline-warning">Chat con usuarios</a>
+                                class="btn btn-outline-warning text-dark">Chat con usuarios</a>
                         </div>
-                        {% endif %}
                     </div>
                 </div>
+                {% endif %}
             </div>
             <div class="col-12 mt-5 bg-light table-responsive">
                 <!--Title for the appointments -->
