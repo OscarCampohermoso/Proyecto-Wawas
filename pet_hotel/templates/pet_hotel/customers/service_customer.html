@@ -121,8 +121,9 @@
                         </div>
                         {% else %}
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{% url 'customers:petwatcher_list' %}"
-                                class="btn btn-outline-info">Busco Cuidadores</a>
+                            <!-- crear un chat de usuarios a cuidadores-->
+                            <a href="{% url 'customers:inbox' %}" 
+                                class="btn btn-outline-warning">Chat con usuarios</a>
                         </div>
                         {% endif %}
                     </div>

@@ -1,26 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito+Sans:wght@700&family=Paytone+One&family=Raleway:wght@100&display=swap');
 
-.art {
-    background-color: rgba(230, 230, 250, 0.76);
-    padding: 3mm;
-    border: 1mm;
-    border-radius: 100cm;
-    border-color: rgba(37, 37, 39, 0.788);
-    border-style: solid;
-
-    text-align: center;
-    font-family: monospace;
-    font-size: 5mm;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-    margin: 100cm;
-}
-
-
-
 .img2 {
     border-radius: 50%;
 }
@@ -79,4 +58,27 @@
 
 .imgbtn:hover {
     transform: scale(1.1);
+}
+
+
+.sent-message {
+	background-color: #f3f3f3;
+	border-radius: 30px;
+	padding: 10px 25px;
+	width: 40%;
+    word-break: break-word;
+}
+
+.received-message {
+	background-color: rgb(1, 196, 255);
+	color: #fff;
+	border-radius: 30px;
+	padding: 10px 25px;
+	width: 40%;
+    word-break: break-word;
+}
+
+.message-receiver-container {
+	margin-left: auto;
+	margin-right: 0;
 }

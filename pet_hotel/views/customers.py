@@ -12,12 +12,13 @@ from django.core.mail import send_mail
 # import datetime.date.today library
 import datetime
 
-
+from django.db.models import Q
+from django.views import View
 
 
 from ..decorators import customer_required
-from ..forms import CustomerSignUpForm, AppointmentForm, PublicationForm
-from ..models import User, Customer, Pet, Appointment, Publication, PetWatcher
+from ..forms import CustomerSignUpForm, AppointmentForm, PublicationForm, MessageForm   #ThreadForm,
+from ..models import User, Customer, Pet, Appointment, Publication, PetWatcher, ThreadModel, MessageModel
 
 class CustomerSignUpView(CreateView):
     model = User
@@ -225,9 +226,13 @@ class PetWatcherCreateView(CreateView):
 def customer_is_dog_watcher(request):
     # get all customers that is_dog_watcher = True
     customers = Customer.objects.filter(is_dog_watcher=True)
+    #only show that is not the request user
+    customers = customers.exclude(user=request.user)
+    #and get all the user of the customer that is_active = True
+    customers = customers.filter(user__is_active=True)
     return render(request, 'pet_hotel/customers/pet_watcher_list.html', {'customers': customers})
 
-
+'''
 @login_required
 @customer_required
 def send_message(request, pk):
@@ -250,8 +255,119 @@ def send_message(request, pk):
         )
     messages.success(request, 'Mensaje enviado correctamente')
     return redirect('customers:petwatcher_list')
+'''
+################
+@method_decorator([login_required, customer_required], name='dispatch')
+class ListThreads(View):
+    def get(self, request, *args, **kwargs):
+       # threads = ThreadModel.objects.filter(Q(user=request.user) | Q(receiver=request.user))
 
-    
+        #threads = ThreadModel.objects.order_by('-date_of_creation')
+        #filter to user = request.user and receiver = request.user and order by date_of_creation
+        threads = ThreadModel.objects.filter(Q(user=request.user) | Q(receiver=request.user)).order_by('-date_of_creation')
+        context = {
+            'threads': threads
+        }
+
+        return render(request, 'pet_hotel/customers/inbox.html', context)
+
+@method_decorator([login_required, customer_required], name='dispatch')
+class CreateThread(View):
+    def get(self, request, pk, *args, **kwargs):
+
+        customer = Customer.objects.get(user=request.user)
+        # get the customer that is going to receive the message
+        customer_to = Customer.objects.get(user_id=pk)
+
+        if ThreadModel.objects.filter(user=request.user, receiver=customer_to.user).exists():
+                thread = ThreadModel.objects.filter(user=request.user, receiver=customer_to.user)[0]
+                return redirect('customers:thread', pk=thread.pk)
+        elif ThreadModel.objects.filter(user=customer_to.user, receiver=request.user).exists():
+                thread = ThreadModel.objects.filter(user=customer_to.user, receiver=request.user)[0]
+                return redirect('customers:thread', pk=thread.pk)
+
+        thread = ThreadModel(
+            user=request.user,
+            #receiver=receiver
+            receiver=customer_to.user
+        )
+        thread.save() 
+        return redirect('customers:thread', pk=thread.pk)
+
+'''
+@method_decorator([login_required, customer_required], name='dispatch')
+class CreateThread(View):
+    def get(self, request, *args, **kwargs):
+        form = ThreadForm()
+
+        context = {
+            'form': form
+        }
+
+        return render(request, 'pet_hotel/customers/create_thread.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = ThreadForm(request.POST)
+
+        username = request.POST.get('username')
+
+        try:
+            receiver = User.objects.get(username=username)
+            if ThreadModel.objects.filter(user=request.user, receiver=receiver).exists():
+                thread = ThreadModel.objects.filter(user=request.user, receiver=receiver)[0]
+                return redirect('thread', pk=thread.pk)
+            elif ThreadModel.objects.filter(user=receiver, receiver=request.user).exists():
+                thread = ThreadModel.objects.filter(user=receiver, receiver=request.user)[0]
+                return redirect('thread', pk=thread.pk)
+
+            if form.is_valid():
+                thread = ThreadModel(
+                    user=request.user,
+                    receiver=receiver
+                )
+                thread.save()
+
+                return redirect('customers:thread', pk=thread.pk)
+        except:
+            messages.error(request, 'Invalid username')
+            return redirect('customers:create-thread')
+'''
+
+@method_decorator([login_required, customer_required], name='dispatch')
+class ThreadView(View):
+    def get(self, request, pk, *args, **kwargs):
+        form = MessageForm()
+        form.fields['image'].label = "Imagen"
+        thread = ThreadModel.objects.get(pk=pk)
+        message_list = MessageModel.objects.filter(thread__pk__contains=pk)
+        context = {
+            'thread': thread,
+            'form': form,
+            'message_list': message_list
+        }
+
+        return render(request, 'pet_hotel/customers/thread.html', context)
+        
+@method_decorator([login_required, customer_required], name='dispatch')
+class CreateMessage(View):
+    def post(self, request, pk, *args, **kwargs):
+        form = MessageForm(request.POST, request.FILES)
+        # create labels for the form fields in the template
+        form.fields['image'].label = "Imagen"
+        thread = ThreadModel.objects.get(pk=pk)
+        if thread.receiver == request.user:
+            receiver = thread.user
+        else:
+            receiver = thread.receiver
+
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.thread = thread
+            message.sender_user = request.user
+            message.receiver_user = receiver
+            message.save()
+
+        return redirect('customers:thread', pk=pk)
 
 
 

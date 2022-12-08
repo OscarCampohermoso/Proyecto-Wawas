@@ -5,7 +5,7 @@ from django.forms.utils import ValidationError
 from django.forms import ModelForm
 
 
-from pet_hotel.models import User, Customer, Contact, Admin, Pet, Appointment, Publication
+from pet_hotel.models import User, Customer, Contact, Admin, Pet, Appointment, Publication, MessageModel
 
 
 class CustomerSignUpForm(UserCreationForm):
@@ -112,3 +112,16 @@ class PublicationForm(forms.ModelForm):
         }
 
         
+#class ThreadForm(forms.Form):
+#    username = forms.CharField(label='', max_length=100)
+
+class MessageForm(forms.ModelForm):
+    body = forms.CharField(label='', max_length=1000)
+
+    image = forms.ImageField(required=False)
+
+    class Meta:
+        model = MessageModel
+        fields = ['body', 'image']
+        
+
