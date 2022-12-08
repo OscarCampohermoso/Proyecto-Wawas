@@ -54,7 +54,7 @@ def contact(request):
         )
         messages.success(request, 'Mensaje enviado correctamente')
     return render(request, 'pet_hotel/contact.html', data)
-
+############################################################################################################
 def news(request):
     publications = Publication.objects.all()
     # Order by publication.date_of_creation 
@@ -95,5 +95,8 @@ def delete_publication(request, id):
     publication.delete()
     messages.success(request, 'Publicación eliminada correctamente')
     return redirect('news')
+
+
+
 
 

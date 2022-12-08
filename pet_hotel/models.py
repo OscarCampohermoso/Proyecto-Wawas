@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.html import escape, mark_safe
 
+from django.utils import timezone
+
 class User(AbstractUser):
     is_customer = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
@@ -57,15 +59,6 @@ class Appointment(models.Model):
     def __str__(self):
         return self.type
 
-class Publication(models.Model):
-    title = models.CharField(max_length=200, blank=True)
-    description = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='publication_images', blank=True, null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=True)
-    date_of_creation = models.DateTimeField(auto_now_add=True) 
-
-    def __str__(self):
-        return self.title
 
 class PetWatcher(models.Model):
     reason = models.CharField(max_length=200, blank=True, null=False)
@@ -76,5 +69,27 @@ class PetWatcher(models.Model):
 
     def __str__(self):
         return self.reason
+############################################################################################################
+class Publication(models.Model):
+    title = models.CharField(max_length=200, blank=True)
+    description = models.CharField(max_length=200, blank=True)
+    image = models.ImageField(upload_to='publication_images', blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=True)
+    date_of_creation = models.DateTimeField(auto_now_add=True) 
 
+    def __str__(self):
+        return self.title
 
+class ThreadModel(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+    date_of_creation = models.DateTimeField(auto_now_add=True) 
+
+class MessageModel(models.Model):
+	thread = models.ForeignKey('ThreadModel', related_name='+', on_delete=models.CASCADE, blank=True, null=True)
+	sender_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+	receiver_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+	body = models.CharField(max_length=1000)
+	image = models.ImageField(upload_to='uploads/message_photos', blank=True, null=True)
+	date = models.DateTimeField(default=timezone.now)
+	is_read = models.BooleanField(default=False)

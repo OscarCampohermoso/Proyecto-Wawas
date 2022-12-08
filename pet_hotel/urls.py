@@ -21,7 +21,11 @@ urlpatterns = [
         path('appointmentdelete/<int:pk>/', customers.delete_appointment, name='appointment_delete'),
         path('createpetwatcher/', customers.PetWatcherCreateView.as_view(), name='petwatcher_create'),
         path('cuidadoreslist/', customers.customer_is_dog_watcher, name='petwatcher_list'),
-        path('sendmessage/<int:pk>/', customers.send_message, name='send_message'),
+       # path('sendmessage/<int:pk>/', customers.send_message, name='send_message'),
+        path('inbox/', customers.ListThreads.as_view(), name='inbox'),
+        path('inbox/create-thread/<int:pk>/', customers.CreateThread.as_view(), name='create-thread'),
+        path('inbox/<int:pk>/', customers.ThreadView.as_view(), name='thread'),
+        path('inbox/<int:pk>/create-message/', customers.CreateMessage.as_view(), name='create-message'),
     ], 'pet_hotel'), namespace='customers')),
 
     path('admins/', include(([
