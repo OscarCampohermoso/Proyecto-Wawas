@@ -169,3 +169,9 @@ Para controlar el flujo de citas y evitar el aglomeramiento de usuarios malicios
   - andrea.quiroga@ucb.edu.bo
 
 ---
+
+## Licencia
+
+El codigo fuente se publica bajo la licencia MIT license.
+
+---
